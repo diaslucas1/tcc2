@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block extrastyle %} 
+  <link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Cadastro de Propriedade</h5>
+          <p class="card-text">
+            Complete o formulário abaixo para cadastrar
+            uma nova <code>Propriedade</code>.
+          </p>
+          <form id="form-steps" method="post">
+            {% csrf_token %}
+            <!-- Informações da Propriedade -->
+            <div class="step">
+              <!-- Nome do Produtor -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Nome do Produtor</span>
+                </div>
+                {% render_field form.nome_produtor class+="form-control" %}
+              </div>
+
+              <!-- Data -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Data</span>
+                </div>
+                {% render_field form.data class+="form-control" %}
+              </div>
+
+              <!-- Municipio -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Municipio</span>
+                </div>
+                {% render_field form.municipio class+="form-control" %}
+              </div>
+
+              <!-- Lote -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Lote</span>
+                </div>
+                {% render_field form.lote class+="form-control" %}
+              </div>
+
+              <!-- Area total -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Área total</span>
+                </div>
+                {% render_field form.area_total class+="form-control" %}
+              </div>
+
+              <!-- Talhao -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Talhão</span>
+                </div>
+                {% render_field form.talhao class+="form-control" %}
+              </div>
+
+              <!-- Area talhao -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Área Talhão</span>
+                </div>
+                {% render_field form.area_talhao class+="form-control" %}
+              </div>
+
+              <!-- Matrícula do Lote -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Matrícula do Lote</span>
+                </div>
+                {% render_field form.matricula_lote class+="form-control" %}
+              </div>
+
+              <!-- Profundidade da Amostra -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Profundidade da Amostra de Solos</span>
+                </div>
+                {% render_field form.profundidade_amostras class+="form-control" %}
+              </div>
+
+              <!-- Resultado da ánalise de solos -->
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Resultado da análise de solos N°</span>
+                </div>
+                {% render_field form.resultado_analise class+="form-control" %}
+              </div>
+
+            </div>
+            <!-- END Informações da Propriedade -->
+
+
+
+            <hr>
+            <div class="text-right">
+              <a href="#" class="btn btn-warning">Cancelar</a>
+              <button type="button" class="btnPrev btn btn-primary">Anterior</button>
+              <button type="submit" class="btnNext btn btn-primary">Próximo</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
