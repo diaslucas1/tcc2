@@ -8,12 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators = multiForm.querySelectorAll(".rounded-circle"),
           currentTab = 0;
       
-      // variáveis para utilizar nos cálculos de correção
+      // variáveis para utilizar nos cálculos de correção do Fósforo
       let fosfAtingir = document.getElementById("id_fosforo_atingir");
       let teorFosf = document.getElementById("id_fosforo");
       let fonteFosf = document.getElementById("id_fonte_fosforo");
       let eficFosf = document.getElementById("id_eficiencia_fosforo");
-      let calcFosf = [fosfAtingir, teorFosf, fonteFosf, eficFosf];
+      let custoFosf = document.getElementById("id_valor_fosforo");
+      let calcFosf = [fosfAtingir, teorFosf, fonteFosf, eficFosf, custoFosf];
 
       showTab(currentTab);
 
@@ -86,24 +87,32 @@ document.addEventListener("DOMContentLoaded", () => {
       })
 
       // Cálculos da planilha para correção/recuperação
-      function corrigePot() {
+      function corrigeFosf() {
         let qntFosf = document.querySelector(".correcao-fosforo");
 
         let difAtingirAtual = fosfAtingir.value - teorFosf.value;
         let porcFosf = (eficFosf.value) / 100;
         let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
         let resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
+
+        let custoTotal = ((custoFosf.value) * resultadoFosf * 2.42 / 1000 / 2.42).toFixed(2);
         
         if(difAtingirAtual > 0.01) {
-          qntFosf.innerHTML = `<p>Quantidade a aplicar: ${resultadoFosf}`;
+          qntFosf.innerHTML = `
+            <p>Quantidade a aplicar: ${resultadoFosf}</p>
+            <p>Custo - R$/ha: ${custoTotal}</p>
+          `;
         } else {
           difAtingirAtual = 0.0;
-          qntFosf.innerHTML = `<p>Quantidade a aplicar: ${resultadoFosf}`;
+          qntFosf.innerHTML = `
+            <p>Quantidade a aplicar: ${resultadoFosf}</p>
+            <p>Custo - R$/ha: ${custoTotal}</p>
+          `;
         }
 
       }
       calcFosf.forEach((input) => {
-        input.addEventListener('keyup', corrigePot);
+        input.addEventListener('keyup', corrigeFosf);
       });
 
     }
