@@ -16,5 +16,17 @@ class InserePropriedadeForm(forms.ModelForm):
       'area_talhao',
       'matricula_lote',
       'profundidade_amostras',
-      'resultado_analise'
+      'resultado_analise',
+      'fosforo',
+      'potassio', 
+      'calcio',
+      'magnesio', 
+      'enxofre',
+      'aluminio', 
+      'hal',
+      'materia_organica',
+      'fosforo_atingir',
+      'fonte_fosforo',
+      'eficiencia_fosforo',
+      'valor_fosforo', 
     ]

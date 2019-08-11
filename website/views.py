@@ -19,6 +19,7 @@ class PropriedadeCreateView(CreateView):
   template_name = "cadastro.html"
   model = Propriedade
   form_class = InserePropriedadeForm
+  success_url = reverse_lazy("website:lista_propriedades")
 
 # LISTA PROPRIEDADES
 class PropriedadeListView(ListView):

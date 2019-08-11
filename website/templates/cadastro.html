@@ -20,97 +20,218 @@
           </p>
           <form id="form-steps" method="post">
             {% csrf_token %}
-            <!-- Informações da Propriedade -->
-            <div class="step">
-              <!-- Nome do Produtor -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Nome do Produtor</span>
+            <div class="container">
+              <div class="row">
+                
+                <div class="col-md-12">
+                  <div class="indicators d-flex justify-content-around py-4 text-light">
+                    <div class="rounded-circle bg-secondary px-2 shadow-sm mr-5">1</div>
+                    <div class="rounded-circle bg-secondary px-2 shadow-sm mr-5">2</div>
+                    <div class="rounded-circle bg-secondary px-2 shadow-sm mr-5">3</div>
+                    <div class="rounded-circle bg-secondary px-2 shadow-sm mr-5">4</div>
+                    <div class="rounded-circle bg-secondary px-2 shadow-sm">5</div>
+                  </div>
                 </div>
-                {% render_field form.nome_produtor class+="form-control" %}
-              </div>
 
-              <!-- Data -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Data</span>
+                <!-- Informações da Propriedade --> 
+                <div class="step">
+                  <!-- Nome do Produtor -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Nome do Produtor</span>
+                    </div>
+                    {% render_field form.nome_produtor class+="form-control" %}
+                  </div>
+
+                  <!-- Data -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Data</span>
+                    </div>
+                    {% render_field form.data class+="form-control" %}
+                  </div>
+
+                  <!-- Municipio -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Municipio</span>
+                    </div>
+                    {% render_field form.municipio class+="form-control" %}
+                  </div>
+
+                  <!-- Lote -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Lote</span>
+                    </div>
+                    {% render_field form.lote class+="form-control" %}
+                  </div>
+
+                  <!-- Area total -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Área total</span>
+                    </div>
+                    {% render_field form.area_total class+="form-control" %}
+                  </div>
+
+                  <!-- Talhao -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Talhão</span>
+                    </div>
+                    {% render_field form.talhao class+="form-control" %}
+                  </div>
+
+                  <!-- Area talhao -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Área Talhão</span>
+                    </div>
+                    {% render_field form.area_talhao class+="form-control" %}
+                  </div>
+
+                  <!-- Matrícula do Lote -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Matrícula do Lote</span>
+                    </div>
+                    {% render_field form.matricula_lote class+="form-control" %}
+                  </div>
+
+                  <!-- Profundidade da Amostra -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Profundidade da Amostra de Solos</span>
+                    </div>
+                    {% render_field form.profundidade_amostras class+="form-control" %}
+                  </div>
+
+                  <!-- Resultado da ánalise de solos -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Resultado da análise de solos N°</span>
+                    </div>
+                    {% render_field form.resultado_analise class+="form-control" %}
+                  </div>
+
                 </div>
-                {% render_field form.data class+="form-control" %}
-              </div>
+                <!-- END Informações da Propriedade -->
+    
 
-              <!-- Municipio -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Municipio</span>
+                <!-- Dados do Laudo Laboratorial -->
+                <div class="step">
+                  <!-- Teor de Fósforo -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fósforo</span>
+                    </div>
+                    {% render_field form.fosforo class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de Potássio -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Potássio</span>
+                    </div>
+                    {% render_field form.potassio class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de Cálcio -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Cálcio</span>
+                    </div>
+                    {% render_field form.calcio class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de Magnésio -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Magnésio</span>
+                    </div>
+                    {% render_field form.magnesio class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de Enxofre -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Enxofre</span>
+                    </div>
+                    {% render_field form.enxofre class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de Alumínio -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Alumínio</span>
+                    </div>
+                    {% render_field form.aluminio class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de H+AL -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">H+AL</span>
+                    </div>
+                    {% render_field form.hal class+="form-control" %}
+                  </div>
+
+                  <!-- Matéria Orgânica -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Matéria Orgânica</span>
+                    </div>
+                    {% render_field form.materia_organica class+="form-control" %}
+                  </div>
+
                 </div>
-                {% render_field form.municipio class+="form-control" %}
-              </div>
+                <!-- END Dados do Laudo Laboratorial -->        
 
-              <!-- Lote -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Lote</span>
+                <!-- Correção/Recuperação de Fósforo -->
+                <div class="step">
+                  <!-- Teor de Fósforo a atingir -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Teor de Fósforo a atingir</span>
+                    </div>
+                    {% render_field form.fosforo_atingir class+="form-control" %}
+                  </div>
+
+                  <!-- Fonte de Fósforo a utilizar -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fonte de Fósforo</span>
+                    </div>
+                    {% render_field form.fonte_fosforo class+="form-control" %}
+                  </div>
+
+                  <!-- Eficiência do Fósforo -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Eficiência do Fósforo</span>
+                    </div>
+                    {% render_field form.eficiencia_fosforo class+="form-control" %}
+                  </div>
+
+                  <!-- Valor/Ton. da fonte -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Valor/Ton.</span>
+                    </div>
+                    {% render_field form.valor_fosforo class+="form-control" %}
+                  </div>
+
                 </div>
-                {% render_field form.lote class+="form-control" %}
-              </div>
 
-              <!-- Area total -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Área total</span>
+                <hr>
+                <div class="col-md-12 text-right">
+                  <a href="{% url 'website:lista_propriedades' %}" class="btn btn-outline-warning">Cancelar</a>
+                  <button type="button" class="btnPrev btn btn-outline-success">Anterior</button>
+                  <button type="button" class="btnNext btn btn-outline-success">Próximo</button>
                 </div>
-                {% render_field form.area_total class+="form-control" %}
+
               </div>
-
-              <!-- Talhao -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Talhão</span>
-                </div>
-                {% render_field form.talhao class+="form-control" %}
-              </div>
-
-              <!-- Area talhao -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Área Talhão</span>
-                </div>
-                {% render_field form.area_talhao class+="form-control" %}
-              </div>
-
-              <!-- Matrícula do Lote -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Matrícula do Lote</span>
-                </div>
-                {% render_field form.matricula_lote class+="form-control" %}
-              </div>
-
-              <!-- Profundidade da Amostra -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Profundidade da Amostra de Solos</span>
-                </div>
-                {% render_field form.profundidade_amostras class+="form-control" %}
-              </div>
-
-              <!-- Resultado da ánalise de solos -->
-              <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">Resultado da análise de solos N°</span>
-                </div>
-                {% render_field form.resultado_analise class+="form-control" %}
-              </div>
-
-            </div>
-            <!-- END Informações da Propriedade -->
-
-
-            <hr>
-            <div class="text-right">
-              <a href="{% url 'website:lista_propriedades' %}" class="btn btn-warning">Cancelar</a>
-              <button type="button" class="btnPrev btn btn-primary">Anterior</button>
-              <button type="submit" class="btnNext btn btn-primary">Próximo</button>
             </div>
           </form>
         </div>
@@ -118,4 +239,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extrascript %}
+  <script src="{% static "js/script.js" %}"></script>
 {% endblock %}
