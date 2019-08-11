@@ -8,13 +8,21 @@ document.addEventListener("DOMContentLoaded", () => {
           indicators = multiForm.querySelectorAll(".rounded-circle"),
           currentTab = 0;
       
-      // variáveis para utilizar nos cálculos de correção do Fósforo
+      // variáveis para utilizar nos cálculos de correção
+      // Fósforo
       let fosfAtingir = document.getElementById("id_fosforo_atingir");
       let teorFosf = document.getElementById("id_fosforo");
       let fonteFosf = document.getElementById("id_fonte_fosforo");
       let eficFosf = document.getElementById("id_eficiencia_fosforo");
       let custoFosf = document.getElementById("id_valor_fosforo");
       let calcFosf = [fosfAtingir, teorFosf, fonteFosf, eficFosf, custoFosf];
+
+      // Potássio
+      let teorPot = document.getElementById("id_potassio");
+      let teorCal = document.getElementById("id_calcio");
+      let teorMag = document.getElementById("id_magnesio");
+      let teorHAL = document.getElementById("id_hal")
+      let calcPot = [teorPot, teorCal, teorMag, teorHAL];
 
       showTab(currentTab);
 
@@ -87,6 +95,7 @@ document.addEventListener("DOMContentLoaded", () => {
       })
 
       // Cálculos da planilha para correção/recuperação
+      // Fósforo
       function corrigeFosf() {
         let qntFosf = document.querySelector(".correcao-fosforo");
 
@@ -114,6 +123,20 @@ document.addEventListener("DOMContentLoaded", () => {
       calcFosf.forEach((input) => {
         input.addEventListener('keyup', corrigeFosf);
       });
+
+      // Potássio
+      function corrigePot() {
+        let qntPot = document.querySelector(".correcao-potassio");
+
+        let partAtual = ((+teorPot.value) / ((+teorPot.value) + (+teorCal.value) + (+teorMag.value) + (+teorHAL.value)) * 100).toFixed(1);  
+
+        qntPot.innerHTML = `<p>Quantidade atual do Potássio na CTC do solo: ${partAtual}</p>`;
+      }
+      calcPot.forEach((input) => {
+        input.addEventListener('keyup', corrigePot);
+      });
+      
+
 
     }
   }

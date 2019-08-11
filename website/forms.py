@@ -28,5 +28,10 @@ class InserePropriedadeForm(forms.ModelForm):
       'fosforo_atingir',
       'fonte_fosforo',
       'eficiencia_fosforo',
-      'valor_fosforo', 
+      'valor_fosforo',
+      'potassio_atingir',
+      'fonte_potassio',
+      'valor_potassio', 
     ]
+
+    

@@ -217,15 +217,44 @@
                   <!-- Valor/Ton. da fonte -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">Valor/Ton.</span>
+                      <span class="input-group-text">Valor/Ton. (R$)</span>
                     </div>
                     {% render_field form.valor_fosforo class+="form-control" %}
                   </div>
 
-
                   <div class="correcao-fosforo"></div>
-
                 </div>
+                <!-- END Correção/Recuperação de Fósforo -->
+
+                <!-- Correção/Recuperação de Potássio -->
+                <div class="step">
+                  <!-- Participação do Potássio na CTC desejada -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Participação do Potássio na CTC desejada</span>
+                    </div>
+                    {% render_field form.potassio_atingir class+="form-control" %}
+                  </div>
+
+                  <!-- Fonte de Potássio a utilizar -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fonte de Potássio</span>
+                    </div>
+                    {% render_field form.fonte_potassio class+="form-control" %}
+                  </div>
+
+                  <!-- Valor/Ton. da fonte -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Valor/Ton. (R$)</span>
+                    </div>
+                    {% render_field form.valor_potassio class+="form-control" %}
+                  </div>
+
+                  <div class="correcao-potassio"></div>
+                </div>
+                <!-- END Correção/Recuperação de Potássio -->
 
                 <hr>
                 <div class="col-md-12 text-right">
