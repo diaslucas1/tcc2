@@ -18,11 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
       let calcFosf = [fosfAtingir, teorFosf, fonteFosf, eficFosf, custoFosf];
 
       // Potássio
+      let potAtingir = document.getElementById("id_potassio_atingir");
       let teorPot = document.getElementById("id_potassio");
       let teorCal = document.getElementById("id_calcio");
       let teorMag = document.getElementById("id_magnesio");
       let teorHAL = document.getElementById("id_hal")
-      let calcPot = [teorPot, teorCal, teorMag, teorHAL];
+      let calcPot = [potAtingir,teorPot, teorCal, teorMag, teorHAL];
 
       showTab(currentTab);
 
@@ -128,9 +129,16 @@ document.addEventListener("DOMContentLoaded", () => {
       function corrigePot() {
         let qntPot = document.querySelector(".correcao-potassio");
 
-        let partAtual = ((+teorPot.value) / ((+teorPot.value) + (+teorCal.value) + (+teorMag.value) + (+teorHAL.value)) * 100).toFixed(1);  
+        let partAtual = ((+teorPot.value) / ((+teorPot.value) + (+teorCal.value) + (+teorMag.value) + (+teorHAL.value)) * 100);
+        
+        let relacDesejAtual = (teorPot.value * potAtingir.value / partAtual) - teorPot.value;
+        let memCalc = relacDesejAtual * 39.1 * 10 * 2 * 1.2 * 100 / (85/100) / 100;
+        let resultadoFosf = (memCalc * 100 / 58).toFixed(2) // 58 - Valor estático, correspondente a escolha da fonte de potásio
 
-        qntPot.innerHTML = `<p>Quantidade atual do Potássio na CTC do solo: ${partAtual}</p>`;
+        qntPot.innerHTML = `
+          <p>Participação atual do Potássio na CTC do solo: ${partAtual.toFixed(1)}</p>
+          <p>Quantidade a aplicar: ${resultadoFosf}</p>
+        `;
       }
       calcPot.forEach((input) => {
         input.addEventListener('keyup', corrigePot);
