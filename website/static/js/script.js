@@ -19,11 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Potássio
       let potAtingir = document.getElementById("id_potassio_atingir");
+      let custoPot = document.getElementById("id_valor_potassio")
       let teorPot = document.getElementById("id_potassio");
       let teorCal = document.getElementById("id_calcio");
       let teorMag = document.getElementById("id_magnesio");
       let teorHAL = document.getElementById("id_hal")
-      let calcPot = [potAtingir,teorPot, teorCal, teorMag, teorHAL];
+      let calcPot = [potAtingir, custoPot, teorPot, teorCal, teorMag, teorHAL];
 
       showTab(currentTab);
 
@@ -100,24 +101,25 @@ document.addEventListener("DOMContentLoaded", () => {
       function corrigeFosf() {
         let qntFosf = document.querySelector(".correcao-fosforo");
 
+        // cálculos da quantidade a aplicar
         let difAtingirAtual = fosfAtingir.value - teorFosf.value;
         let porcFosf = (eficFosf.value) / 100;
         let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
         let resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
 
+        // custo total
         let custoTotal = ((custoFosf.value) * resultadoFosf * 2.42 / 1000 / 2.42).toFixed(2);
+
+        let alteraTemplFosf = `
+        <p>Quantidade a aplicar: ${resultadoFosf}</p>
+        <p>Custo - R$/ha: ${custoTotal}</p>
+      `;
         
         if(difAtingirAtual > 0.01) {
-          qntFosf.innerHTML = `
-            <p>Quantidade a aplicar: ${resultadoFosf}</p>
-            <p>Custo - R$/ha: ${custoTotal}</p>
-          `;
+          qntFosf.innerHTML = `${alteraTemplFosf}`;
         } else {
           difAtingirAtual = 0.0;
-          qntFosf.innerHTML = `
-            <p>Quantidade a aplicar: ${resultadoFosf}</p>
-            <p>Custo - R$/ha: ${custoTotal}</p>
-          `;
+          qntFosf.innerHTML = `${alteraTemplFosf}`;
         }
 
       }
@@ -131,14 +133,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let partAtual = ((+teorPot.value) / ((+teorPot.value) + (+teorCal.value) + (+teorMag.value) + (+teorHAL.value)) * 100);
         
+        // cálculo da quantidade a aplicar
         let relacDesejAtual = (teorPot.value * potAtingir.value / partAtual) - teorPot.value;
         let memCalc = relacDesejAtual * 39.1 * 10 * 2 * 1.2 * 100 / (85/100) / 100;
-        let resultadoFosf = (memCalc * 100 / 58).toFixed(2) // 58 - Valor estático, correspondente a escolha da fonte de potásio
+        let resultadoPot = (memCalc * 100 / 58).toFixed(2) // 58 - Valor estático, correspondente a escolha da fonte de potásio
 
-        qntPot.innerHTML = `
+        // cálculo do custo total
+        let custoTotal = ((custoPot.value * resultadoPot * 2.42 / 1000) / 2.42).toFixed(2);
+
+        let alteraTemplPot = `
           <p>Participação atual do Potássio na CTC do solo: ${partAtual.toFixed(1)}</p>
-          <p>Quantidade a aplicar: ${resultadoFosf}</p>
+          <p>Quantidade a aplicar: ${resultadoPot}</p>
+          <p>Custo - R$/ha: ${custoTotal}</p>
         `;
+
+        if(relacDesejAtual > 0.01) {
+          qntPot.innerHTML = `${alteraTemplPot}`; 
+        } else {
+          relacDesejAtual = 0.0;
+          qntPot.innerHTML = `${alteraTemplPot}`;
+        }
       }
       calcPot.forEach((input) => {
         input.addEventListener('keyup', corrigePot);
