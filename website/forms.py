@@ -31,7 +31,12 @@ class InserePropriedadeForm(forms.ModelForm):
       'valor_fosforo',
       'potassio_atingir',
       'fonte_potassio',
-      'valor_potassio', 
+      'valor_potassio',
+      'calcio_atingir',
+      'fonte_calmag',
+      'prnt',
+      'cao_corretivo',
+      'valor_calmag',
     ]
 
     

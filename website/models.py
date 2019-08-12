@@ -46,3 +46,4 @@ class Propriedade(models.Model):
   fonte_calmag = models.CharField(max_length=255, null=False, default="")
   prnt = models.CharField(max_length=255, null=False, default="")
   cao_corretivo = models.CharField(max_length=255, null=False, default="")
+  valor_calmag = models.CharField(max_length=255, null=False, default="")

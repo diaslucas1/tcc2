@@ -26,6 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
       let teorHAL = document.getElementById("id_hal")
       let calcPot = [potAtingir, custoPot, teorPot, teorCal, teorMag, teorHAL];
 
+      // Cálcio e Magnésio
+      let calMag = [teorCal, teorCal, teorMag, teorPot, teorHAL]
+
       showTab(currentTab);
 
       function showTab(n) {
@@ -99,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Cálculos da planilha para correção/recuperação
       // Fósforo
       function corrigeFosf() {
-        let qntFosf = document.querySelector(".correcao-fosforo");
+        let dadosFosf = document.querySelector(".correcao-fosforo");
 
         // cálculos da quantidade a aplicar
         let difAtingirAtual = fosfAtingir.value - teorFosf.value;
@@ -116,10 +119,10 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
         
         if(difAtingirAtual > 0.01) {
-          qntFosf.innerHTML = `${alteraTemplFosf}`;
+          dadosFosf.innerHTML = `${alteraTemplFosf}`;
         } else {
           difAtingirAtual = 0.0;
-          qntFosf.innerHTML = `${alteraTemplFosf}`;
+          dadosFosf.innerHTML = `${alteraTemplFosf}`;
         }
 
       }
@@ -129,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Potássio
       function corrigePot() {
-        let qntPot = document.querySelector(".correcao-potassio");
+        let dadosPot = document.querySelector(".correcao-potassio");
 
         let partAtual = ((+teorPot.value) / ((+teorPot.value) + (+teorCal.value) + (+teorMag.value) + (+teorHAL.value)) * 100);
         
@@ -148,14 +151,29 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
 
         if(relacDesejAtual > 0.01) {
-          qntPot.innerHTML = `${alteraTemplPot}`; 
+          dadosPot.innerHTML = `${alteraTemplPot}`; 
         } else {
           relacDesejAtual = 0.0;
-          qntPot.innerHTML = `${alteraTemplPot}`;
+          dadosPot.innerHTML = `${alteraTemplPot}`;
         }
       }
       calcPot.forEach((input) => {
         input.addEventListener('keyup', corrigePot);
+      });
+
+      // Cálcio e Magnésio
+      function corrigeCalMag() {
+      let dadosCalMag = document.querySelector(".correcao-calmag");
+
+      partAtualAux = (+teorCal.value) + (+teorMag.value) + (+teorPot.value) + (+teorHAL.value);
+      partAtualCal = ((+teorCal.value) / (partAtualAux) * 100).toFixed(1);
+      partAtualMag = ((+teorMag.value) / (partAtualAux) * 100).toFixed(1);
+
+      // partIdealCal e partIdealMag - dependem da textura do solo
+
+      }
+      calcCalMag.forEach((input) => {
+        input.addEventListener('keyup', corrigeCalMag);
       });
       
 

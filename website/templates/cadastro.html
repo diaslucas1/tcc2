@@ -256,6 +256,51 @@
                 </div>
                 <!-- END Correção/Recuperação de Potássio -->
 
+                <!-- Correção/Recuperação de Cálcio e Magnésio -->
+                <div class="step">
+                  <!-- % de participação do Cálcio na CTC desejada -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Participação do Cálcio na CTC desejada</span>
+                    </div>
+                    {% render_field form.calcio_atingir class+="form-control" %}
+                  </div>
+
+                  <!-- Fonte de Corretivo a utilizar -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Fonte de Corretivo</span>
+                    </div>
+                    {% render_field form.fonte_calmag class+="form-control" %}
+                  </div>
+
+                  <!-- PRNT -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">PRNT                 </div>
+                    {% render_field form.prnt class+="form-control" %}
+                  </div>
+
+                  <!-- Teor de CaO do corretivo -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Teor de CaO do corretivo</span>
+                    </div>
+                    {% render_field form.cao_corretivo class+="form-control" %}
+                  </div>
+
+                  <!-- Valor/Ton. da fonte -->
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Valor/Ton. (R$)</span>
+                    </div>
+                    {% render_field form.valor_calmag class+="form-control" %}
+                  </div>
+
+                  <div class="correcao-calmag"></div>
+                </div>
+                <!-- END Correção/Recuperação de Cálcio e Magnésio -->
+
                 <hr>
                 <div class="col-md-12 text-right">
                   <a href="{% url 'website:lista_propriedades' %}" class="btn btn-outline-warning">Cancelar</a>
