@@ -27,7 +27,11 @@ document.addEventListener("DOMContentLoaded", () => {
       let calcPot = [potAtingir, custoPot, teorPot, teorCal, teorMag, teorHAL];
 
       // Cálcio e Magnésio
-      let calMag = [teorCal, teorCal, teorMag, teorPot, teorHAL]
+      let calAtingir = document.getElementById("id_calcio_atingir");
+      let teorCao = document.getElementById("id_cao_corretivo");
+      let prnt = document.getElementById("id_prnt");
+      let custoCalMag = document.getElementById("id_valor_calmag");
+      let calcCalMag = [calAtingir, teorCao, prnt, custoCalMag, fosfAtingir, eficFosf, teorFosf, teorCal, teorCal, teorMag, teorPot, teorHAL]
 
       showTab(currentTab);
 
@@ -163,21 +167,52 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Cálcio e Magnésio
       function corrigeCalMag() {
-      let dadosCalMag = document.querySelector(".correcao-calmag");
+        let dadosCalMag = document.querySelector(".correcao-calmag");
 
-      partAtualAux = (+teorCal.value) + (+teorMag.value) + (+teorPot.value) + (+teorHAL.value);
-      partAtualCal = ((+teorCal.value) / (partAtualAux) * 100).toFixed(1);
-      partAtualMag = ((+teorMag.value) / (partAtualAux) * 100).toFixed(1);
+        let partAtualAux = (+teorCal.value) + (+teorMag.value) + (+teorPot.value) + (+teorHAL.value);
+        let partAtualCal = ((+teorCal.value) / (partAtualAux) * 100);
+        let partAtualMag = ((+teorMag.value) / (partAtualAux) * 100);
 
-      // partIdealCal e partIdealMag - dependem da textura do solo
+        // partIdealCal e partIdealMag - dependem da textura do solo
 
+        // reutilizando cálculos da quantidade a aplicar do Fósforo
+        let difAtingirAtual = fosfAtingir.value - teorFosf.value;
+        let porcFosf = (eficFosf.value) / 100;
+        let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
+        let resultadoFosf = ((memCalc * 100) / 18); // valor da fonte de fósforo estática
+
+        // cálculos da quantidade a aplicar
+        let auxCalc = resultadoFosf * 0.28 * 0.49924 / 1000; // 0.28 - valor estático - depende do input da fonte de fósforo a utilizar
+        // 0,49924 - valor estático - depende do input da fonte de fósforo a utilizar
+
+        let resultadoInterm;
+        if(teorCao.value > 0.01) {
+          resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+        } else {
+          resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte a utilizar
+        }
+
+        let auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        let resultadoCalMag;
+        if( (auxCalc2 / resultadoInterm) > 0.001 ) {
+          resultadoCalMag = (auxCalc2 / resultadoInterm) * 100 / prnt.value;
+        } else {
+          resultadoCalMag = 0;
+        }
+
+        // cálculo do custo total
+        let custoTotal = (resultadoCalMag * custoCalMag.value);
+        
+        dadosCalMag.innerHTML = `
+          <p>Participação atual do Cálcio na CTC do solo: ${partAtualCal.toFixed(1)}</p>
+          <p>Participação atual do Magnésio na CTC do solo: ${partAtualMag.toFixed(1)}</p>
+          <p>Quantidade a aplicar: ${resultadoCalMag.toFixed(2)}</p>
+          <p>Custo - R$/ha: ${custoTotal.toFixed(2)}</p>
+        `;
       }
       calcCalMag.forEach((input) => {
         input.addEventListener('keyup', corrigeCalMag);
       });
-      
-
-
     }
   }
   let ms = new FormSteps("form-steps");
