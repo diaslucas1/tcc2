@@ -55,4 +55,8 @@
   }
 }
 
+.buscar-propriedade:focus {
+  box-shadow: none;
+}
+
 
