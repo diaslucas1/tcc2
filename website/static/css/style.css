@@ -80,10 +80,36 @@ html, body {
 .landing-text h1 {
   font-size: 500%;
   font-weight: 700;
+  color: black;
 }
 
-@media (max-width: 768px) {
+.landing-text .btn {
+  width: 370px;
+  background-color: black;
+  border-color: #1A6602;
+  border-radius: 1.5em;
+}
+
+.landing-text .btn:hover {
+  background-color: #1A6602;
+}
+
+@media (max-width: 767px) {
   .landing-text h1 {
-    font-size: 300%;
+    font-size: 400%;
+  }
+  .landing-text .btn {
+    width: 320px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 560px) {
+  .landing-text h1 {
+    font-size: 350%;
+  }
+  .landing-text .btn {
+    width: 300px;
+    font-size: 0.9rem;
   }
 }
