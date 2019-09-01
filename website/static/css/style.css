@@ -27,7 +27,6 @@
 
 .form-control.invalid {
   border: 1px solid #ec2626;
-  /* paste any animation you want */
   animation: shaking 0.82s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
@@ -59,4 +58,32 @@
   box-shadow: none;
 }
 
+.fa-user-circle {
+  color: #1A6602;
+  font-size: 40px;
+}
 
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+
+.landing-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.landing-text h1 {
+  font-size: 500%;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .landing-text h1 {
+    font-size: 300%;
+  }
+}
