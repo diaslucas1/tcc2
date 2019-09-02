@@ -44,7 +44,7 @@ FONTES_CALMAG = (
 )
 
 class Propriedade(models.Model):
-  
+
 
   # Informações sobre a propriedade do produtor
   nome_produtor = models.CharField(max_length=255, null=False, default="")

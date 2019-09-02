@@ -21,17 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
       let potAtingir = document.getElementById("id_potassio_atingir");
       let custoPot = document.getElementById("id_valor_potassio")
       let teorPot = document.getElementById("id_potassio");
+      let fontePot = document.getElementById("id_fonte_potassio");
       let teorCal = document.getElementById("id_calcio");
       let teorMag = document.getElementById("id_magnesio");
       let teorHAL = document.getElementById("id_hal")
-      let calcPot = [potAtingir, custoPot, teorPot, teorCal, teorMag, teorHAL];
+      let calcPot = [potAtingir, custoPot, teorPot, fontePot, teorCal, teorMag, teorHAL];
 
       // Cálcio e Magnésio
       let calAtingir = document.getElementById("id_calcio_atingir");
       let teorCao = document.getElementById("id_cao_corretivo");
+      let fonteCalMag = document.getElementById("id_fonte_calmag");
       let prnt = document.getElementById("id_prnt");
       let custoCalMag = document.getElementById("id_valor_calmag");
-      let calcCalMag = [calAtingir, teorCao, prnt, custoCalMag, fosfAtingir, eficFosf, teorFosf, teorCal, teorCal, teorMag, teorPot, teorHAL]
+      let calcCalMag = [calAtingir, teorCao, fonteFosf, fonteCalMag, prnt, custoCalMag, fosfAtingir, eficFosf, teorFosf, teorCal, teorCal, teorMag, teorPot, teorHAL]
 
       showTab(currentTab);
 
@@ -103,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
         clickButton(1);
       })
 
+
       // Cálculos da planilha para correção/recuperação
       // Fósforo
       function corrigeFosf() {
@@ -112,7 +115,40 @@ document.addEventListener("DOMContentLoaded", () => {
         let difAtingirAtual = fosfAtingir.value - teorFosf.value;
         let porcFosf = (eficFosf.value) / 100;
         let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
-        let resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
+
+        let resultadoFosf = 0;
+
+        // cálculo de acordo com a fonte de fósforo utilizada
+        if(fonteFosf.value == 1 || fonteFosf.value == 5 || fonteFosf.value == 12) {
+          resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
+        }
+        else if(fonteFosf.value == 2) {
+          resultadoFosf = ((memCalc * 100) / 41).toFixed(2);
+        }
+        else if(fonteFosf.value == 3) {
+          resultadoFosf = ((memCalc * 100) / 48).toFixed(2);
+        }
+        else if(fonteFosf.value == 4) {
+          resultadoFosf = ((memCalc * 100) / 45).toFixed(2);
+        }
+        else if(fonteFosf.value == 6) {
+          resultadoFosf = ((memCalc * 100) / 33).toFixed(2);
+        }
+        else if(fonteFosf.value == 7) {
+          resultadoFosf = ((memCalc * 100) / 29).toFixed(2);
+        }
+        else if(fonteFosf.value == 8) {
+          resultadoFosf = ((memCalc * 100) / 32).toFixed(2);
+        }
+        else if(fonteFosf.value == 9) {
+          resultadoFosf = ((memCalc * 100) / 24).toFixed(2);
+        }
+        else if(fonteFosf.value == 10) {
+          resultadoFosf = ((memCalc * 100) / 18.5).toFixed(2);
+        }
+        else if(fonteFosf.value == 11) {
+          resultadoFosf = ((memCalc * 100) / 52).toFixed(2);
+        }
 
         // custo total
         let custoTotal = ((custoFosf.value) * resultadoFosf * 2.42 / 1000 / 2.42).toFixed(2);
@@ -131,8 +167,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
       calcFosf.forEach((input) => {
-        input.addEventListener('keyup', corrigeFosf);
+        input.addEventListener('change', corrigeFosf);
       });
+      // fonteFosf.addEventListener('change', corrigeFosf);
+
+
+
 
       // Potássio
       function corrigePot() {
@@ -143,7 +183,22 @@ document.addEventListener("DOMContentLoaded", () => {
         // cálculo da quantidade a aplicar
         let relacDesejAtual = (teorPot.value * potAtingir.value / partAtual) - teorPot.value;
         let memCalc = relacDesejAtual * 39.1 * 10 * 2 * 1.2 * 100 / (85/100) / 100;
-        let resultadoPot = (memCalc * 100 / 58).toFixed(2) // 58 - Valor estático, correspondente a escolha da fonte de potásio
+
+        let resultadoPot = 0;
+        
+        // cálculo de acordo com a fonte de potássio utilizada
+        if(fontePot.value == 1) {
+          resultadoPot = (memCalc * 100 / 58).toFixed(2); // 58 - Valor estático, correspondente a escolha da fonte de potásio
+        }
+        else if(fontePot.value == 2) {
+          resultadoPot = (memCalc * 100 / 52).toFixed(2);
+        }
+        else if(fontePot.value == 3) {
+          resultadoPot = (memCalc * 100 / 22).toFixed(2);
+        }
+        else if(fontePot.value == 4) {
+          resultadoPot = (memCalc * 100 / 44).toFixed(2);
+        }
 
         // cálculo do custo total
         let custoTotal = ((custoPot.value * resultadoPot * 2.42 / 1000) / 2.42).toFixed(2);
@@ -162,8 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
       calcPot.forEach((input) => {
-        input.addEventListener('keyup', corrigePot);
+        input.addEventListener('change', corrigePot);
       });
+
+
+
 
       // Cálcio e Magnésio
       function corrigeCalMag() {
@@ -179,20 +237,301 @@ document.addEventListener("DOMContentLoaded", () => {
         let difAtingirAtual = fosfAtingir.value - teorFosf.value;
         let porcFosf = (eficFosf.value) / 100;
         let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
-        let resultadoFosf = ((memCalc * 100) / 18); // valor da fonte de fósforo estática
 
-        // cálculos da quantidade a aplicar
-        let auxCalc = resultadoFosf * 0.28 * 0.49924 / 1000; // 0.28 - valor estático - depende do input da fonte de fósforo a utilizar
-        // 0,49924 - valor estático - depende do input da fonte de fósforo a utilizar
+        let resultadoFosf, resultadoInterm, auxCalc, auxCalc2 = 0;
+        
+        // cálculos da quantidade a aplicar de acordo com a fonte de fósforo utilizada
+        if(fonteFosf.value == 1 || fonteFosf.value == 5) {
+          resultadoFosf = ((memCalc * 100) / 18).toFixed(2);
 
-        let resultadoInterm;
-        if(teorCao.value > 0.01) {
-          resultadoInterm = auxCalc + (teorCao.value * 0.01783);
-        } else {
-          resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte a utilizar
+          auxCalc = resultadoFosf * 0.28 * 0.49924 / 1000;
+          // 0,49924 - valor estático - depende do input da fonte de fósforo a utilizar
+
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+              if(fonteCalMag.value == 1) {
+                resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+              } else if(fonteCalMag.value == 2) {
+                resultadoInterm = auxCalc + (56 * 0.01783);  
+              } else if(fonteCalMag.value == 3) {
+                resultadoInterm = auxCalc + (54 * 0.01783);  
+              } else if(fonteCalMag.value == 4) {
+                resultadoInterm = auxCalc + (29 * 0.01783);  
+              } else if(fonteCalMag.value == 5) {
+                resultadoInterm = auxCalc + (75.7 * 0.01783);  
+              } else if(fonteCalMag.value == 6) {
+                resultadoInterm = auxCalc + (35 * 0.01783);  
+              }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+
+        }
+        else if(fonteFosf.value == 2) {
+          resultadoFosf = ((memCalc * 100) / 41).toFixed(2);
+          
+          auxCalc = resultadoFosf * 0.2 * 0.33877 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 3) {
+          resultadoFosf = ((memCalc * 100) / 48).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.09 * 0 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+
+        }
+        else if(fonteFosf.value == 4) {
+          resultadoFosf = ((memCalc * 100) / 45).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.16 * 0 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+
+        }
+        else if(fonteFosf.value == 6) {
+          resultadoFosf = ((memCalc * 100) / 33).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.52 * 0.92716 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+
+        }
+        else if(fonteFosf.value == 7) {
+          resultadoFosf = ((memCalc * 100) / 29).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.52 * 0.92716 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 8) {
+          resultadoFosf = ((memCalc * 100) / 32).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.45 * 0.80235 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 9) {
+          resultadoFosf = ((memCalc * 100) / 24).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.28 * 0.49924 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 10) {
+          resultadoFosf = ((memCalc * 100) / 18.5).toFixed(2);
+
+          auxCalc = resultadoFosf * 0.44 * 0.795218 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 11) {
+          resultadoFosf = ((memCalc * 100) / 52).toFixed(2);
+
+          auxCalc = resultadoFosf * 0 * 0 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
+        }
+        else if(fonteFosf.value == 12) {
+          resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
+
+          auxCalc = resultadoFosf * 0.18 * 0 / 1000;
+
+          resultadoInterm;
+          if(teorCao.value > 0.01) {
+            resultadoInterm = auxCalc + (teorCao.value * 0.01783);
+          } else {
+            if(fonteCalMag.value == 1) {
+              resultadoInterm = auxCalc + (30.4 * 0.01783); // 30.4 - valor estático - depende do input da fonte de corretivo a utilizar
+            } else if(fonteCalMag.value == 2) {
+              resultadoInterm = auxCalc + (56 * 0.01783);  
+            } else if(fonteCalMag.value == 3) {
+              resultadoInterm = auxCalc + (54 * 0.01783);  
+            } else if(fonteCalMag.value == 4) {
+              resultadoInterm = auxCalc + (29 * 0.01783);  
+            } else if(fonteCalMag.value == 5) {
+              resultadoInterm = auxCalc + (75.7 * 0.01783);  
+            } else if(fonteCalMag.value == 6) {
+              resultadoInterm = auxCalc + (35 * 0.01783);  
+            }
+          }
+
+          auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
         }
 
-        let auxCalc2 = ((teorCal.value * calAtingir.value) / partAtualCal) - teorCal.value - auxCalc;
         let resultadoCalMag;
         if( (auxCalc2 / resultadoInterm) > 0.001 ) {
           resultadoCalMag = (auxCalc2 / resultadoInterm) * 100 / prnt.value;
@@ -211,7 +550,7 @@ document.addEventListener("DOMContentLoaded", () => {
         `;
       }
       calcCalMag.forEach((input) => {
-        input.addEventListener('keyup', corrigeCalMag);
+        input.addEventListener('change', corrigeCalMag);
       });
     }
   }
