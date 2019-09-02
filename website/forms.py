@@ -17,6 +17,8 @@ class InserePropriedadeForm(forms.ModelForm):
       'matricula_lote',
       'profundidade_amostras',
       'resultado_analise',
+      'text_solo',
+      'sist_cultivo',
       'fosforo',
       'potassio', 
       'calcio',
