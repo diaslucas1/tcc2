@@ -12,15 +12,15 @@
   </div>
 </section>
 
-<div class="container mt-3">
+<div class="container mt-3 mb-5">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Cadastro de Propriedade</h5>
+          <!-- <h5 class="card-title">Cadastro de Propriedade</h5> -->
           <p class="card-text">
             Complete o formulário abaixo para cadastrar
-            uma nova <code>Propriedade</code>.
+            uma nova Propriedade.
           </p>
           <form id="form-steps" method="post">
             {% csrf_token %}
@@ -39,6 +39,7 @@
 
                 <!-- Informações da Propriedade --> 
                 <div class="step">
+                  <h5 class="title-form mt-4 mb-4">Informações da propriedade do produtor</h5>
                   <!-- Nome do Produtor -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -125,6 +126,7 @@
 
                 <!-- Dados do Laudo Laboratorial -->
                 <div class="step">
+                  <h5 class="title-form mt-4 mb-4">Dados do Laudo Laboratorial</h5>
                   <!-- Teor de Fósforo -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -194,6 +196,7 @@
 
                 <!-- Correção/Recuperação de Fósforo -->
                 <div class="step">
+                  <h5 class="title-form mt-4 mb-4">Dados para Correção/Recuperação de Fósforo</h5>
                   <!-- Teor de Fósforo a atingir -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -232,6 +235,7 @@
 
                 <!-- Correção/Recuperação de Potássio -->
                 <div class="step">
+                  <h5 class="title-form mt-4 mb-4">Dados para Correção/Recuperação de Potássio</h5>
                   <!-- Participação do Potássio na CTC desejada -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -262,6 +266,7 @@
 
                 <!-- Correção/Recuperação de Cálcio e Magnésio -->
                 <div class="step">
+                  <h5 class="title-form mt-4 mb-4">Dados para Correção/Recuperação de Cálcio e Magnésio</h5>
                   <!-- % de participação do Cálcio na CTC desejada -->
                   <div class="input-group mb-3">
                     <div class="input-group-prepend">

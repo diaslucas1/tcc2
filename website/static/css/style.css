@@ -65,6 +65,20 @@
   font-size: 40px;
 }
 
+.fa-search {
+  color: #1A6602;
+}
+
+/* cabeçalho da tabela */
+thead {
+  background-color: #1A6602;
+  font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+thead th {
+  color: white;
+}
+
 .main-title {
   font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: white;
@@ -80,6 +94,17 @@
   height: 4px;
   background-color: white;
   margin: 6px auto 8px auto;
+}
+
+.input-group-prepend span {
+  background-color: #1A6602;
+  color: white;
+}
+
+.title-form {
+  font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #1A6602;
+  text-transform: uppercase;
 }
 
 .panel-image {
@@ -127,6 +152,9 @@ html, body {
     width: 320px;
     font-size: 1rem;
   }
+  .main-title {
+    font-size: 36px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -136,5 +164,8 @@ html, body {
   .landing-text .btn {
     width: 300px;
     font-size: 0.9rem;
+  }
+  th, td {
+    font-size: 0.7rem;
   }
 }

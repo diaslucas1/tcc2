@@ -3,18 +3,18 @@
 {% block body %}
 <div class="container mt-3">
   <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Exclusão de Propriedade</h5>
+    <div class="card-body text-center">
+      <h4 class="card-title" style="color: #1A6602">Exclusão de Propriedade</h4>
 
       <p class="card-text">
-        Você tem certeza que quer excluir o propriedade <b>{{ propriedade.nome }}</b>?
+        Excluir o cadastro do produtor <b>{{ propriedade.nome_produtor }}</b> realizado em <b>{{ propriedade.data }}</b>?
       </p>
 
       <form method="post">
         {% csrf_token %}
 
         <hr />
-        <div class="text-right">
+        <div class="text-center">
           <a href="{% url 'website:lista_propriedades' %}" class="btn btn-outline-danger">
             Cancelar
           </a>
