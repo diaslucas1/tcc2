@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
 .hide {
   display: none;
 }
@@ -63,6 +65,27 @@
   font-size: 40px;
 }
 
+.main-title {
+  font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: white;
+  font-weight: 700;
+  font-size: 48px;
+  text-transform: uppercase;
+}
+
+.main-title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 4px;
+  background-color: white;
+  margin: 6px auto 8px auto;
+}
+
+.panel-image {
+  height: 160px !important;
+  padding-top: 30px;
+}
 
 html, body {
   height: 100%;
@@ -78,9 +101,11 @@ html, body {
 }
 
 .landing-text h1 {
-  font-size: 500%;
+  font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 450%;
   font-weight: 700;
   color: black;
+  text-transform: uppercase;
 }
 
 .landing-text .btn {

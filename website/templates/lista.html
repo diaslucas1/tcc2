@@ -3,64 +3,60 @@
 {% load staticfiles %}
 
 {% block body %}
+<section class="container-fluid p-0">
+  <div class="panel-image w-100 h-100" style="background: url('{% static 'img/list.jpg' %}') no-repeat center; background-size: cover">
+    <h1 class="main-title mt-3 col-12 text-center">Lista de Propriedades</h1>
+  </div>
+</section>
+
 <div class="container mt-3">
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Lista de Propriedades</h5>
-
-          {% if propriedades|length > 0 %}
-            <p class="card-text">
-              Aqui está a lista de <code>Propriedades</code> cadastradas.
-            </p>
-
-            <div class="input-group mb-4 border rounded-pill p-1">
-              <input type="text" placeholder="Digite o nome do produtor..." aria-describedby="button-addon" class="form-control border-0 buscar-propriedade">
-              <div class="input-group-append border-0">
-                <button id="button-addon" type="button" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
-              </div>
-            </div>
-
-            <table class="table">
-              <thead class="thead-dark">
-              <tr>
-                <th scope="col">Nome do Produtor</th>
-                <th scope="col">Data</th>
-                <th scope="col" class="text-center">Ações</th>
-              </tr>
-              </thead>
-              <tbody>
-              {% for propriedade in propriedades %}
-                <tr class="propriedade">
-                  <td class="nome-list">{{ propriedade.nome_produtor }}</td>
-                  <td>{{ propriedade.data }}</td>
-                  <td class="text-center">
-                    <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}"
-                       class="btn btn-primary">
-                      Atualizar
-                    </a>
-                    <a href="{% url 'website:deleta_propriedade' pk=propriedade.id %}"
-                      class="btn btn-danger">
-                        Excluir
-                    </a>
-                  </td>
-                </tr>
-              {% endfor %}
-              </tbody>
-            </table>
-        {% else %}
-          <div class="text-center mt-5 mb-5 jumbotron">
-            <h5>Nenhuma <code>Propriedade</code> cadastrada ainda.</h5>
-          </div>
-        {% endif %}
-          <hr />
-          <div class="text-right">
-            <a href="{% url 'website:cadastra_propriedade' %}" class="btn btn-primary">
-              Cadastrar Propriedade
-            </a>
+      {% if propriedades|length > 0 %}
+        <div class="input-group mb-4 border rounded-pill p-1">
+          <input type="text" placeholder="Digite o nome do produtor..." aria-describedby="button-addon" class="form-control border-0 buscar-propriedade">
+          <div class="input-group-append border-0">
+            <button id="button-addon" type="button" class="btn btn-link text-success"><i class="fa fa-search"></i></button>
           </div>
         </div>
+
+        <table class="table">
+          <thead class="thead-dark">
+          <tr>
+            <th scope="col">Nome do Produtor</th>
+            <th scope="col">Data</th>
+            <th scope="col" class="text-center">Ações</th>
+          </tr>
+          </thead>
+          <tbody>
+          {% for propriedade in propriedades %}
+            <tr class="propriedade">
+              <td class="nome-list">{{ propriedade.nome_produtor }}</td>
+              <td>{{ propriedade.data }}</td>
+              <td class="text-center">
+                <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}"
+                    class="btn btn-primary">
+                  Atualizar
+                </a>
+                <a href="{% url 'website:deleta_propriedade' pk=propriedade.id %}"
+                  class="btn btn-danger">
+                    Excluir
+                </a>
+              </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+      <div class="text-center mt-5 mb-5 jumbotron">
+        <h5>Nenhuma <code>Propriedade</code> cadastrada ainda.</h5>
+      </div>
+    {% endif %}
+      <hr />
+      <div class="text-right">
+        <a href="{% url 'website:cadastra_propriedade' %}" class="btn btn-primary">
+          Cadastrar Propriedade
+        </a>
       </div>
     </div>
   </div>
