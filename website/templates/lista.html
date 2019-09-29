@@ -34,10 +34,10 @@
               <td class="nome-list">{{ propriedade.nome_produtor }}</td>
               <td>{{ propriedade.data }}</td>
               <td class="text-center">
-                <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm">
+                <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-sm-1 mt-1">
                   Atualizar
                 </a>
-                <a href="{% url 'website:deleta_propriedade' pk=propriedade.id %}" class="btn btn-outline-danger btn-sm">
+                <a href="{% url 'website:deleta_propriedade' pk=propriedade.id %}" class="btn btn-outline-danger btn-sm mt-1">
                   Excluir
                 </a>
               </td>
@@ -46,7 +46,7 @@
           </tbody>
         </table>
     {% else %}
-      <div class="text-center mt-5 mb-5 jumbotron">
+      <div class="col-12 text-center mt-5 mb-5 jumbotron">
         <h5>Nenhuma <code>Propriedade</code> cadastrada ainda.</h5>
       </div>
     {% endif %}

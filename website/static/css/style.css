@@ -144,6 +144,30 @@ html, body {
   background-color: #1A6602;
 }
 
+.input-group-text {
+  font-size: 0.8rem;
+}
+
+.btn-outline-success {
+  color: #1A6602;
+  border-color: #1A6602;
+}
+
+.btn-outline-success:hover {
+  background-color: #1A6602;
+  border-color: #1A6602;
+  color: #ffffff;
+}
+
+.label-resultado {
+  background-color: red !important;
+  color: white;
+}
+
+code {
+  color: #1A6602;
+}
+
 @media (max-width: 767px) {
   .landing-text h1 {
     font-size: 400%;
@@ -155,9 +179,21 @@ html, body {
   .main-title {
     font-size: 36px;
   }
+  .btn-sm {
+    width: 65px;
+  }
+}
+
+@media (max-width: 360px) {
+  .btn {
+    font-size: 0.5rem;
+  }
 }
 
 @media (max-width: 560px) {
+  .btn {
+    font-size: 0.7rem;
+  }
   .landing-text h1 {
     font-size: 350%;
   }
@@ -167,5 +203,17 @@ html, body {
   }
   th, td {
     font-size: 0.7rem;
+  }
+  .input-group-text, .form-control {
+    font-size: 0.6rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .container {
+    max-width: 1440px;
   }
 }

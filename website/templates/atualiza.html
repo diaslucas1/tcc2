@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
 {% load widget_tweaks %}
 
 {% block body %}
@@ -11,304 +12,397 @@
           <p class="card-text">
             Complete o formulário abaixo para cadastrar uma nova Propriedade.
           </p>
-          <form method="post">
+          <form id="form-steps" method="post">
             {% csrf_token %}
             <div class="container">
               <div class="row">
-
+                
+                <div class="col-md-12">
+                  <div class="indicators d-flex justify-content-around py-4 text-light">
+                    <div class="rounded-circle bg-success px-2 shadow-sm mr-md-5 mr-4">1</div>
+                    <div class="rounded-circle bg-success px-2 shadow-sm mr-md-5 mr-4">2</div>
+                    <div class="rounded-circle bg-success px-2 shadow-sm mr-md-5 mr-4">3</div>
+                    <div class="rounded-circle bg-success px-2 shadow-sm mr-md-5 mr-4">4</div>
+                    <div class="rounded-circle bg-success px-2 shadow-sm">5</div>
+                  </div>
+                </div>
+    
                 <!-- Informações da Propriedade --> 
-                <div>
-                  <h5 class="title-form text-center mt-4 mb-4">Especificações da propriedade</h5>
-                  <!-- Nome do Produtor -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Nome do Produtor</span>
+                <div class="step">
+                  <h5 class="title-form text-center mt-md-4 mb-md-4">Especificações da propriedade</h5>
+                  
+                  <div class="row">
+                    <!-- Nome do Produtor -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Nome do Produtor</span>
+                      </div>
+                      {% render_field form.nome_produtor class+="form-control" %}
                     </div>
-                    {% render_field form.nome_produtor class+="form-control" %}
-                  </div>
-
-                  <!-- Data -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Data</span>
+    
+                    <!-- Data -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Data</span>
+                      </div>
+                      {% render_field form.data class+="form-control" type="date" %}
                     </div>
-                    {% render_field form.data class+="form-control" %}
-                  </div>
-
-                  <!-- Municipio -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Municipio</span>
+    
+                    <!-- Municipio -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Municipio</span>
+                      </div>
+                      {% render_field form.municipio class+="form-control" %}
                     </div>
-                    {% render_field form.municipio class+="form-control" %}
-                  </div>
-
-                  <!-- Lote -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Lote</span>
+    
+                    <!-- Lote -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Lote</span>
+                      </div>
+                      {% render_field form.lote class+="form-control" %}
                     </div>
-                    {% render_field form.lote class+="form-control" %}
-                  </div>
-
-                  <!-- Area total -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Área total</span>
+    
+                    <!-- Area total -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Área total (ha)</span>
+                      </div>
+                      {% render_field form.area_total class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.area_total class+="form-control" %}
-                  </div>
-
-                  <!-- Talhao -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Talhão</span>
+    
+                    <!-- Talhao -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Talhão</span>
+                      </div>
+                      {% render_field form.talhao class+="form-control" %}
                     </div>
-                    {% render_field form.talhao class+="form-control" %}
-                  </div>
-
-                  <!-- Area talhao -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Área Talhão</span>
+    
+                    <!-- Area talhao -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Área Talhão (ha)</span>
+                      </div>
+                      {% render_field form.area_talhao class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.area_talhao class+="form-control" %}
-                  </div>
-
-                  <!-- Matrícula do Lote -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Matrícula do Lote</span>
+    
+                    <!-- Matrícula do Lote -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Matrícula do Lote</span>
+                      </div>
+                      {% render_field form.matricula_lote class+="form-control" %}
                     </div>
-                    {% render_field form.matricula_lote class+="form-control" %}
-                  </div>
-
-                  <!-- Textura do Solo -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Textura do Solo</span>
+    
+                    <!-- Textura do Solo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Textura do Solo</span>
+                      </div>
+                      {% render_field form.text_solo class+="form-control" %}
                     </div>
-                    {% render_field form.text_solo class+="form-control" %}
-                  </div>
-
-                  <!-- Sistema de Cultivo -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Sistema de Cultivo</span>
+    
+                    <!-- Sistema de Cultivo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Sistema de Cultivo</span>
+                      </div>
+                      {% render_field form.sist_cultivo class+="form-control" %}
                     </div>
-                    {% render_field form.sist_cultivo class+="form-control" %}
-                  </div>
-
-                  <!-- Profundidade da Amostra -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Profundidade da Amostra de Solos</span>
+    
+                    <!-- Profundidade da Amostra -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Profundidade da Amostra (cm)</span>
+                      </div>
+                      {% render_field form.profundidade_amostras class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.profundidade_amostras class+="form-control" %}
-                  </div>
-
-                  <!-- Resultado da ánalise de solos -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Resultado da análise de solos N°</span>
+    
+                    <!-- Resultado da ánalise de solos -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Resultado da análise de solos N°</span>
+                      </div>
+                      {% render_field form.resultado_analise class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.resultado_analise class+="form-control" %}
                   </div>
-
                 </div>
                 <!-- END Informações da Propriedade -->
     
-
                 <!-- Dados do Laudo Laboratorial -->
-                <div>
-                  <h5 class="title-form text-center mt-4 mb-4">Dados do Laudo Laboratorial</h5>
-                  <!-- Teor de Fósforo -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Fósforo</span>
+                <div class="step">
+                  <h5 class="title-form text-center mt-md-4 mb-md-4">Dados do Laudo Laboratorial</h5>
+                  
+                  <div class="row">
+                    <!-- Teor de Fósforo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Fósforo (mg.dm³)</span>
+                      </div>
+                      {% render_field form.fosforo class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.fosforo class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de Potássio -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Potássio</span>
+    
+                    <!-- Teor de Potássio -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Potássio (cmol.dm³)</span>
+                      </div>
+                      {% render_field form.potassio class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.potassio class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de Cálcio -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Cálcio</span>
+    
+                    <!-- Teor de Cálcio -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Cálcio (cmol.dm³)</span>
+                      </div>
+                      {% render_field form.calcio class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.calcio class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de Magnésio -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Magnésio</span>
+    
+                    <!-- Teor de Magnésio -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Magnésio (cmol.dm³)</span>
+                      </div>
+                      {% render_field form.magnesio class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.magnesio class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de Enxofre -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Enxofre</span>
+    
+                    <!-- Teor de Enxofre -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Enxofre (mg.dm³)</span>
+                      </div>
+                      {% render_field form.enxofre class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.enxofre class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de Alumínio -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Alumínio</span>
+    
+                    <!-- Teor de Alumínio -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Alumínio (mg.dm³)</span>
+                      </div>
+                      {% render_field form.aluminio class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.aluminio class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de H+AL -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">H+AL</span>
+    
+                    <!-- Teor de H+AL -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">H+AL (mg.dm³)</span>
+                      </div>
+                      {% render_field form.hal class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.hal class+="form-control" %}
-                  </div>
-
-                  <!-- Matéria Orgânica -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Matéria Orgânica</span>
+    
+                    <!-- Matéria Orgânica -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Matéria Orgânica</span>
+                      </div>
+                      {% render_field form.materia_organica class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.materia_organica class+="form-control" %}
                   </div>
-
                 </div>
                 <!-- END Dados do Laudo Laboratorial -->        
-
+    
                 <!-- Correção/Recuperação de Fósforo -->
-                <div>
-                  <h5 class="title-form text-center mt-4 mb-4">Dados para Correção/Recuperação de Fósforo</h5>
-                  <!-- Teor de Fósforo a atingir -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Teor de Fósforo a atingir</span>
+                <div class="step">
+                  <h5 class="title-form text-center mt-md-4 mb-md-4">Dados para Correção/Recuperação de Fósforo</h5>
+    
+                  <div class="row">
+                    <!-- Teor de Fósforo a atingir -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Teor de Fósforo a atingir (mg.dm³)</span>
+                      </div>
+                      {% render_field form.fosforo_atingir class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.fosforo_atingir class+="form-control" %}
-                  </div>
-
-                  <!-- Fonte de Fósforo a utilizar -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Fonte de Fósforo</span>
+    
+                    <!-- Fonte de Fósforo a utilizar -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Fonte de Fósforo</span>
+                      </div>
+                      {% render_field form.fonte_fosforo class+="form-control" %}
                     </div>
-                    {% render_field form.fonte_fosforo class+="form-control" %}
-                  </div>
-
-                  <!-- Eficiência do Fósforo -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Eficiência do Fósforo</span>
+    
+                    <!-- Eficiência do Fósforo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Eficiência do Fósforo (%)</span>
+                      </div>
+                      {% render_field form.eficiencia_fosforo class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.eficiencia_fosforo class+="form-control" %}
-                  </div>
-
-                  <!-- Valor/Ton. da fonte -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Valor/Ton. (R$)</span>
+    
+                    <!-- Valor/Ton. da fonte -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Valor/Ton. (R$)</span>
+                      </div>
+                      {% render_field form.valor_fosforo class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.valor_fosforo class+="form-control" %}
+    
+                    <!--  -->
+                    <div class="correcao-fosforo col-12 mb-2 text-center"></div>
+                    <!--  -->
+    
+                    <!-- Quantidade a aplicar fósforo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
+                      </div>
+                      {% render_field form.aplicar_fosforo class+="form-control" %}
+                    </div>
+    
+                    <!-- Custo (R$/ha) aplicação fósforo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                      </div>
+                      {% render_field form.custo_fosforo class+="form-control" %}
+                    </div>
+                    
                   </div>
-
-                  <div class="correcao-fosforo"></div>
                 </div>
                 <!-- END Correção/Recuperação de Fósforo -->
-
+    
                 <!-- Correção/Recuperação de Potássio -->
-                <div>
-                  <h5 class="title-form text-center mt-4 mb-4">Dados para Correção/Recuperação de Potássio</h5>
-                  <!-- Participação do Potássio na CTC desejada -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Participação do Potássio na CTC desejada</span>
+                <div class="step">
+                  <h5 class="title-form text-center mt-md-4 mb-md-4">Dados para Correção/Recuperação de Potássio</h5>
+    
+                  <div class="row">
+                    <!-- Participação do Potássio na CTC desejada -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Participação do Potássio na CTC desejada (%)</span>
+                      </div>
+                      {% render_field form.potassio_atingir class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.potassio_atingir class+="form-control" %}
-                  </div>
-
-                  <!-- Fonte de Potássio a utilizar -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Fonte de Potássio</span>
+    
+                    <!-- Fonte de Potássio a utilizar -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Fonte de Potássio</span>
+                      </div>
+                      {% render_field form.fonte_potassio class+="form-control" %}
                     </div>
-                    {% render_field form.fonte_potassio class+="form-control" %}
-                  </div>
-
-                  <!-- Valor/Ton. da fonte -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Valor/Ton. (R$)</span>
+    
+                    <!-- Valor/Ton. da fonte -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Valor/Ton. (R$)</span>
+                      </div>
+                      {% render_field form.valor_potassio class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.valor_potassio class+="form-control" %}
+    
+                    <div class="correcao-potassio col-12 mb-2 text-center"></div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO POTÁSSIO NA CTC DO SOLO (%)</span>
+                      </div>
+                      {% render_field form.particip_potassio class+="form-control" %}
+                    </div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
+                      </div>
+                      {% render_field form.aplicar_potassio class+="form-control" %}
+                    </div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                      </div>
+                      {% render_field form.custo_potassio class+="form-control" %}
+                    </div>
+    
                   </div>
-
-                  <div class="correcao-potassio"></div>
                 </div>
                 <!-- END Correção/Recuperação de Potássio -->
-
+    
                 <!-- Correção/Recuperação de Cálcio e Magnésio -->
-                <div>
-                  <h5 class="title-form text-center mt-4 mb-4">Dados para Correção/Recuperação de Cálcio e Magnésio</h5>
-                  <!-- % de participação do Cálcio na CTC desejada -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Participação do Cálcio na CTC desejada</span>
+                <div class="step">
+                  <h5 class="title-form text-center mt-md-4 mb-md-4">Dados para Correção/Recuperação de Cálcio e Magnésio</h5>
+    
+                  <div class="row">
+                    <!-- % de participação do Cálcio na CTC desejada -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Participação do Cálcio na CTC desejada (%)</span>
+                      </div>
+                      {% render_field form.calcio_atingir class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.calcio_atingir class+="form-control" %}
-                  </div>
-
-                  <!-- Fonte de Corretivo a utilizar -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Fonte de Corretivo</span>
+    
+                    <!-- Fonte de Corretivo a utilizar -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Fonte de Corretivo</span>
+                      </div>
+                      {% render_field form.fonte_calmag class+="form-control" %}
                     </div>
-                    {% render_field form.fonte_calmag class+="form-control" %}
-                  </div>
-
-                  <!-- PRNT -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">PRNT                 </div>
-                    {% render_field form.prnt class+="form-control" %}
-                  </div>
-
-                  <!-- Teor de CaO do corretivo -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Teor de CaO do corretivo</span>
+    
+                    <!-- PRNT -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">PRNT (%)</span>
+                      </div>
+                      {% render_field form.prnt class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.cao_corretivo class+="form-control" %}
-                  </div>
-
-                  <!-- Valor/Ton. da fonte -->
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text">Valor/Ton. (R$)</span>
+    
+                    <!-- Teor de CaO do corretivo -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Teor de CaO do corretivo (%)</span>
+                      </div>
+                      {% render_field form.cao_corretivo class+="form-control" type="number" %}
                     </div>
-                    {% render_field form.valor_calmag class+="form-control" %}
+    
+                    <!-- Valor/Ton. da fonte -->
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Valor/Ton. (R$)</span>
+                      </div>
+                      {% render_field form.valor_calmag class+="form-control" type="number" %}
+                    </div>
+    
+                    <div class="correcao-calmag col-12 mb-2 text-center"></div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO CÁLCIO NA CTC DO SOLO (%)</span>
+                      </div>
+                      {% render_field form.particip_calc class+="form-control" %}
+                    </div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO MAGNÉSIO NA CTC DO SOLO (%)</span>
+                      </div>
+                      {% render_field form.particip_magnes class+="form-control" %}
+                    </div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (ton/ha)</span>
+                      </div>
+                      {% render_field form.aplicar_calmag class+="form-control" %}
+                    </div>
+    
+                    <div class="input-group mb-3 col-md-6">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                      </div>
+                      {% render_field form.custo_calmag class+="form-control" %}
+                    </div>
                   </div>
-
-                  <div class="correcao-calmag"></div>
                 </div>
                 <!-- END Correção/Recuperação de Cálcio e Magnésio -->
-
+    
                 <hr>
-                <div class="col-md-12 text-right">
-                  <a href="{% url 'website:lista_propriedades' %}" class="btn btn-outline-warning">Voltar</a>
-                  <button class="btn btn-outline-success">Enviar</button>
+                <div class="col-md-12 text-right pr-0">
+                  <a href="{% url 'website:lista_propriedades' %}" class="btn btn-outline-warning">Cancelar</a>
+                  <button type="button" class="btnPrev btn btn-outline-success">Anterior</button>
+                  <button type="button" class="btnNext btn btn-outline-success">Próximo</button>
                 </div>
 
               </div>
@@ -319,4 +413,8 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extrascript %}
+  <script src="{% static "js/script.js" %}"></script>
 {% endblock %}

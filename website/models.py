@@ -43,8 +43,8 @@ FONTES_CALMAG = (
   ('6', 'Calcário Magnesiano')  
 )
 
-class Propriedade(models.Model):
 
+class Propriedade(models.Model):
 
   # Informações sobre a propriedade do produtor
   nome_produtor = models.CharField(max_length=255, null=False, default="")
@@ -76,11 +76,16 @@ class Propriedade(models.Model):
   fonte_fosforo = models.CharField(max_length=3, choices=FONTES_FOSFORO, default="1")
   eficiencia_fosforo = models.CharField(max_length=255, null=False, default="")
   valor_fosforo = models.CharField(max_length=255, null=False, default="")
+  aplicar_fosforo = models.CharField(max_length=255, null=False, default="")
+  custo_fosforo = models.CharField(max_length=255, null=False, default="")
 
   # Correção/recuperação de Potássio
   potassio_atingir = models.CharField(max_length=255, null=False, default="")
   fonte_potassio = models.CharField(max_length=3, choices=FONTES_POTASSIO, default="1")
   valor_potassio = models.CharField(max_length=255, null=False, default="")
+  particip_potassio = models.CharField(max_length=255, null=False, default="")
+  aplicar_potassio = models.CharField(max_length=255, null=False, default="")
+  custo_potassio = models.CharField(max_length=255, null=False, default="")
 
   # Correção/recuperação de Cálcio e Magnésio
   calcio_atingir = models.CharField(max_length=255, null=False, default="")
@@ -88,3 +93,7 @@ class Propriedade(models.Model):
   prnt = models.CharField(max_length=255, null=False, default="")
   cao_corretivo = models.CharField(max_length=255, null=False, default="")
   valor_calmag = models.CharField(max_length=255, null=False, default="")
+  particip_calc = models.CharField(max_length=255, null=False, default="")
+  particip_magnes = models.CharField(max_length=255, null=False, default="")
+  aplicar_calmag = models.CharField(max_length=255, null=False, default="")
+  custo_calmag = models.CharField(max_length=255, null=False, default="")

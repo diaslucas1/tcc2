@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
           btnNext = multiForm.querySelector(".btnNext"),
           indicators = multiForm.querySelectorAll(".rounded-circle"),
           currentTab = 0;
+
+      let inputs = document.querySelectorAll(".form-control");
       
       // variáveis para utilizar nos cálculos de correção
       // Fósforo
@@ -34,6 +36,28 @@ document.addEventListener("DOMContentLoaded", () => {
       let prnt = document.getElementById("id_prnt");
       let custoCalMag = document.getElementById("id_valor_calmag");
       let calcCalMag = [calAtingir, teorCao, fonteFosf, fonteCalMag, prnt, custoCalMag, fosfAtingir, eficFosf, teorFosf, teorCal, teorCal, teorMag, teorPot, teorHAL]
+
+      // Itens readonly
+      let qntAplicarFosf = document.getElementById("id_aplicar_fosforo");
+      qntAplicarFosf.readOnly = true;
+      let custoAplicarFosf = document.getElementById("id_custo_fosforo");
+      custoAplicarFosf.readOnly = true;
+
+      let participPot = document.getElementById("id_particip_potassio");
+      participPot.readOnly = true;
+      let qntAplicarPot = document.getElementById("id_aplicar_potassio");
+      qntAplicarPot.readOnly = true;
+      let custoAplicarPot = document.getElementById("id_custo_potassio");
+      custoAplicarPot.readOnly = true;
+
+      let participCalc = document.getElementById("id_particip_calc");
+      participCalc.readOnly = true;
+      let participMag = document.getElementById("id_particip_magnes");
+      participMag.readOnly = true;
+      let qntAplicarCalMag = document.getElementById("id_aplicar_calmag");
+      qntAplicarCalMag.readOnly = true;
+      let custoAplicarCalMag = document.getElementById("id_custo_calmag");
+      custoAplicarCalMag.readOnly = true;
 
       showTab(currentTab);
 
@@ -93,6 +117,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
         return valid;
 
+        // inputs.forEach(input => {
+        //   input.value.replace(",",".");
+        // })
         // inputs.value.replace(",","."); TROCAR VÍRGULA
 
       }
@@ -112,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
         let dadosFosf = document.querySelector(".correcao-fosforo");
 
         // cálculos da quantidade a aplicar
-        let difAtingirAtual = fosfAtingir.value - teorFosf.value;
+        let difAtingirAtual = fosfAtingir.value - teorFosf.value.replace(",",".");
         let porcFosf = (eficFosf.value) / 100;
         let memCalc = (difAtingirAtual * 2 * 2.29 * 100) / porcFosf / 100;
 
@@ -153,17 +180,31 @@ document.addEventListener("DOMContentLoaded", () => {
         // custo total
         let custoTotal = ((custoFosf.value) * resultadoFosf * 2.42 / 1000 / 2.42).toFixed(2);
 
-        let alteraTemplFosf = `
-        <p>Quantidade a aplicar: ${resultadoFosf}</p>
-        <p>Custo - R$/ha: ${custoTotal}</p>
-      `;
+      //   let alteraTemplFosf = `
+      //   <p>Quantidade a aplicar: ${resultadoFosf} kg/ha</p>
+      //   <p>Custo - R$/ha: ${custoTotal}</p>
+      // `;
         
-        if(difAtingirAtual > 0.01) {
-          dadosFosf.innerHTML = `${alteraTemplFosf}`;
-        } else {
-          difAtingirAtual = 0.0;
-          dadosFosf.innerHTML = `${alteraTemplFosf}`;
-        }
+      calcFosf.forEach((input) => {
+        
+          if(fosfAtingir.value == "" || eficFosf.value == "" || custoFosf.value == "") {
+            dadosFosf.innerHTML = `<span class="label-resultado input-group-text text-center d-block">Preencha todos os campos para exibir os resultados!</span>`
+            qntAplicarFosf.value = "";
+            custoAplicarFosf.value = "";
+          }
+          else {
+            dadosFosf.innerHTML = "";
+            if(difAtingirAtual > 0.01) {
+              qntAplicarFosf.value = `${resultadoFosf}`;
+              custoAplicarFosf.value = `${custoTotal}`;
+            } else {
+              difAtingirAtual = 0.0;
+              // dadosFosf.innerHTML = `${alteraTemplFosf}`;
+              qntAplicarFosf.value = `${resultadoFosf}`;
+              custoAplicarFosf.value = `${custoTotal}`;
+            }
+          }     
+      })
 
       }
       calcFosf.forEach((input) => {
@@ -203,18 +244,35 @@ document.addEventListener("DOMContentLoaded", () => {
         // cálculo do custo total
         let custoTotal = ((custoPot.value * resultadoPot * 2.42 / 1000) / 2.42).toFixed(2);
 
-        let alteraTemplPot = `
-          <p>Participação atual do Potássio na CTC do solo: ${partAtual.toFixed(1)}</p>
-          <p>Quantidade a aplicar: ${resultadoPot}</p>
-          <p>Custo - R$/ha: ${custoTotal}</p>
-        `;
+        // let alteraTemplPot = `
+        //   <p>Participação atual do Potássio na CTC do solo: ${partAtual.toFixed(1)}</p>
+        //   <p>Quantidade a aplicar: ${resultadoPot}</p>
+        //   <p>Custo - R$/ha: ${custoTotal}</p>
+        // `;
 
-        if(relacDesejAtual > 0.01) {
-          dadosPot.innerHTML = `${alteraTemplPot}`; 
-        } else {
-          relacDesejAtual = 0.0;
-          dadosPot.innerHTML = `${alteraTemplPot}`;
+        
+        if(potAtingir.value == "" || custoPot.value == "") {
+          dadosPot.innerHTML = `<span class="label-resultado input-group-text text-center d-block">Preencha todos os campos para exibir os resultados!</span>`;
+          participPot.value = "";
+          qntAplicarPot.value = "";
+          custoAplicarPot.value = "";
         }
+        else {
+          dadosPot.innerHTML = "";
+          if(relacDesejAtual > 0.01) {
+            participPot.value = `${partAtual.toFixed(1)}`;
+            qntAplicarPot.value = `${resultadoPot}`;
+            custoAplicarPot.value = `${custoTotal}`;
+          } else {
+            relacDesejAtual = 0.0;
+            // dadosPot.innerHTML = `${alteraTemplPot}`;
+            participPot.value = `${partAtual.toFixed(1)}`;
+            qntAplicarPot.value = `${resultadoPot}`;
+            custoAplicarPot.value = `${custoTotal}`;
+          }
+        }
+       
+
       }
       calcPot.forEach((input) => {
         input.addEventListener('change', corrigePot);
@@ -542,17 +600,41 @@ document.addEventListener("DOMContentLoaded", () => {
         // cálculo do custo total
         let custoTotal = (resultadoCalMag * custoCalMag.value);
         
-        dadosCalMag.innerHTML = `
-          <p>Participação atual do Cálcio na CTC do solo: ${partAtualCal.toFixed(1)}</p>
-          <p>Participação atual do Magnésio na CTC do solo: ${partAtualMag.toFixed(1)}</p>
-          <p>Quantidade a aplicar: ${resultadoCalMag.toFixed(2)}</p>
-          <p>Custo - R$/ha: ${custoTotal.toFixed(2)}</p>
-        `;
+        // dadosCalMag.innerHTML = `
+        //   <p>Participação atual do Cálcio na CTC do solo: ${partAtualCal.toFixed(1)}</p>
+        //   <p>Participação atual do Magnésio na CTC do solo: ${partAtualMag.toFixed(1)}</p>
+        //   <p>Quantidade a aplicar: ${resultadoCalMag.toFixed(2)}</p>
+        //   <p>Custo - R$/ha: ${custoTotal.toFixed(2)}</p>
+        // `;
+
+        
+        if(calAtingir.value == "" || prnt.value == "" || teorCal.value == "" || custoCalMag.value == "" ) {
+          dadosCalMag.innerHTML = `<span class="label-resultado input-group-text text-center d-block">Preencha todos os campos para exibir os resultados!</span>`;
+          participCalc.value = "";
+          participMag.value = "";
+          qntAplicarCalMag.value = "";
+          custoAplicarCalMag.value = "";
+        } else {
+          dadosCalMag.innerHTML = "";
+          participCalc.value = `${partAtualCal.toFixed(1)}`;
+          participMag.value = `${partAtualMag.toFixed(1)}`;
+          qntAplicarCalMag.value = `${resultadoCalMag.toFixed(2)}`;
+          custoAplicarCalMag.value = `${custoTotal.toFixed(2)}`;
+        }
+       
       }
       calcCalMag.forEach((input) => {
         input.addEventListener('change', corrigeCalMag);
       });
+    
+      // inputs.forEach((input) => {
+      //   input.addEventListener('change', function() {
+      //     input.value.replace(",", ".");
+      //   })
+      // })
+
     }
+
   }
   let ms = new FormSteps("form-steps");
 });
