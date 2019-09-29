@@ -8,7 +8,7 @@
   <div class="row">
     <div class="col-12">
       <div class="card">
-        <div class="card-body">
+        <div class="card-body p-sm-3 p-1">
           <p class="card-text">
             Complete o formulário abaixo para cadastrar uma nova Propriedade.
           </p>
@@ -239,6 +239,8 @@
                       </div>
                       {% render_field form.valor_fosforo class+="form-control" type="number" %}
                     </div>
+
+                    <hr>
     
                     <!--  -->
                     <div class="correcao-fosforo col-12 mb-2 text-center"></div>
@@ -247,7 +249,7 @@
                     <!-- Quantidade a aplicar fósforo -->
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
+                        <span class="input-group-text label-resultado">Quantidade a aplicar (kg/ha)</span>
                       </div>
                       {% render_field form.aplicar_fosforo class+="form-control" %}
                     </div>
@@ -255,7 +257,7 @@
                     <!-- Custo (R$/ha) aplicação fósforo -->
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                        <span class="input-group-text label-resultado">Custo (R$/ha)</span>
                       </div>
                       {% render_field form.custo_fosforo class+="form-control" %}
                     </div>
@@ -270,7 +272,7 @@
     
                   <div class="row">
                     <!-- Participação do Potássio na CTC desejada -->
-                    <div class="input-group mb-3 col-md-6">
+                    <div class="input-group mb-3 col-lg-6">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Participação do Potássio na CTC desejada (%)</span>
                       </div>
@@ -292,26 +294,28 @@
                       </div>
                       {% render_field form.valor_potassio class+="form-control" type="number" %}
                     </div>
-    
+                    
+                    <hr>
+
                     <div class="correcao-potassio col-12 mb-2 text-center"></div>
     
-                    <div class="input-group mb-3 col-md-6">
+                    <div class="input-group mb-3 col-lg-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO POTÁSSIO NA CTC DO SOLO (%)</span>
+                        <span class="input-group-text label-resultado">Participação atual do Potássio na CTC (%)</span>
                       </div>
                       {% render_field form.particip_potassio class+="form-control" %}
                     </div>
     
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
+                        <span class="input-group-text label-resultado">Quantidade a aplicar (kg/ha)</span>
                       </div>
                       {% render_field form.aplicar_potassio class+="form-control" %}
                     </div>
     
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                        <span class="input-group-text label-resultado">Custo (R$/ha)</span>
                       </div>
                       {% render_field form.custo_potassio class+="form-control" %}
                     </div>
@@ -326,7 +330,7 @@
     
                   <div class="row">
                     <!-- % de participação do Cálcio na CTC desejada -->
-                    <div class="input-group mb-3 col-md-6">
+                    <div class="input-group mb-3 col-lg-6">
                       <div class="input-group-prepend">
                         <span class="input-group-text">Participação do Cálcio na CTC desejada (%)</span>
                       </div>
@@ -364,33 +368,35 @@
                       </div>
                       {% render_field form.valor_calmag class+="form-control" type="number" %}
                     </div>
+
+                    <hr>
     
                     <div class="correcao-calmag col-12 mb-2 text-center"></div>
     
-                    <div class="input-group mb-3 col-md-6">
+                    <div class="input-group mb-3 col-lg-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO CÁLCIO NA CTC DO SOLO (%)</span>
+                        <span class="input-group-text label-resultado">Participação atual do Cálcio na CTC (%)</span>
                       </div>
                       {% render_field form.particip_calc class+="form-control" %}
                     </div>
     
-                    <div class="input-group mb-3 col-md-6">
+                    <div class="input-group mb-3 col-lg-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO MAGNÉSIO NA CTC DO SOLO (%)</span>
+                        <span class="input-group-text label-resultado">Participação atual do Magnésio na CTC (%)</span>
                       </div>
                       {% render_field form.particip_magnes class+="form-control" %}
                     </div>
     
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (ton/ha)</span>
+                        <span class="input-group-text label-resultado">Quantidade a aplicar (ton/ha)</span>
                       </div>
                       {% render_field form.aplicar_calmag class+="form-control" %}
                     </div>
     
                     <div class="input-group mb-3 col-md-6">
                       <div class="input-group-prepend">
-                        <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
+                        <span class="input-group-text label-resultado">Custo (R$/ha)</span>
                       </div>
                       {% render_field form.custo_calmag class+="form-control" %}
                     </div>

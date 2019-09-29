@@ -168,6 +168,10 @@ code {
   color: #1A6602;
 }
 
+hr {
+  width: 100%;
+}
+
 @media (max-width: 767px) {
   .landing-text h1 {
     font-size: 400%;
@@ -182,6 +186,9 @@ code {
   .btn-sm {
     width: 65px;
   }
+  hr {
+    width: 95% !important; 
+  }
 }
 
 @media (max-width: 360px) {
@@ -191,8 +198,11 @@ code {
 }
 
 @media (max-width: 560px) {
+  hr {
+    width: 90% !important;
+  }
   .btn {
-    font-size: 0.7rem;
+    font-size: 0.6rem;
   }
   .landing-text h1 {
     font-size: 350%;

@@ -12,7 +12,7 @@
 
 <div class="container mt-3 mb-5">
   <div class="card">
-    <div class="card-body">
+    <div class="card-body p-sm-3 p-1">
       <p class="card-text">
         Complete o formulário abaixo para cadastrar uma nova Propriedade.
       </p>
@@ -244,6 +244,8 @@
                   {% render_field form.valor_fosforo class+="form-control" type="number" %}
                 </div>
 
+                <hr>
+
                 <!--  -->
                 <div class="correcao-fosforo col-12 mb-2 text-center"></div>
                 <!--  -->
@@ -274,7 +276,7 @@
 
               <div class="row">
                 <!-- Participação do Potássio na CTC desejada -->
-                <div class="input-group mb-3 col-md-6">
+                <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Participação do Potássio na CTC desejada (%)</span>
                   </div>
@@ -297,9 +299,11 @@
                   {% render_field form.valor_potassio class+="form-control" type="number" %}
                 </div>
 
+                <hr>
+
                 <div class="correcao-potassio col-12 mb-2 text-center"></div>
 
-                <div class="input-group mb-3 col-md-6">
+                <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO POTÁSSIO NA CTC DO SOLO (%)</span>
                   </div>
@@ -330,7 +334,7 @@
 
               <div class="row">
                 <!-- % de participação do Cálcio na CTC desejada -->
-                <div class="input-group mb-3 col-md-6">
+                <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text">Participação do Cálcio na CTC desejada (%)</span>
                   </div>
@@ -369,16 +373,18 @@
                   {% render_field form.valor_calmag class+="form-control" type="number" %}
                 </div>
 
+                <hr>
+
                 <div class="correcao-calmag col-12 mb-2 text-center"></div>
 
-                <div class="input-group mb-3 col-md-6">
+                <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO CÁLCIO NA CTC DO SOLO (%)</span>
                   </div>
                   {% render_field form.particip_calc class+="form-control" %}
                 </div>
 
-                <div class="input-group mb-3 col-md-6">
+                <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO MAGNÉSIO NA CTC DO SOLO (%)</span>
                   </div>
