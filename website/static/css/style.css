@@ -191,6 +191,15 @@ hr {
   text-transform: uppercase;
 }
 
+td, td a, td a:hover {
+  color: #1A6602;
+  text-decoration: none;
+}
+
+td a:hover {
+  font-weight: 700;
+}
+
 @media (max-width: 767px) {
   .landing-text h1 {
     font-size: 400%;

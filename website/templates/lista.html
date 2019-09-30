@@ -4,13 +4,16 @@
 
 {% block body %}
 <section class="container-fluid p-0">
-  <div class="panel-image w-100 h-100" style="background: url('{% static 'img/list.jpg' %}') no-repeat center; background-size: cover">
+  <div class="panel-image w-100 h-100" style="background: url('{% static 'img/list2.png' %}') no-repeat center; background-size: cover">
     <h1 class="main-title mt-3 col-12 text-center">Lista de Propriedades</h1>
   </div>
 </section>
 
 <div class="container mt-3 mb-5">
   <div class="row">
+    <p class="card-text col-12">
+      Clique no nome de um produtor pra ver o resultado dos cálculos simplificados!
+    </p>
     {% if propriedades|length > 0 %}
     <div class="input-group border rounded-pill p-1 mb-4">
       <input type="text" placeholder="Digite o nome do produtor..." aria-describedby="button-addon" class="form-control border-0 buscar-propriedade">
@@ -31,13 +34,10 @@
           <tbody>
           {% for propriedade in propriedades %}
             <tr class="propriedade text-center">
-              <td class="nome-list">{{ propriedade.nome_produtor }}</td>
+              <td><a href="{% url 'website:detalhe_propriedade' pk=propriedade.id %}">{{ propriedade.nome_produtor }}</a></td>
               <td>{{ propriedade.data }}</td>
               <td class="text-center">
-                  <a href="{% url 'website:detalhe_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-sm-1 mt-1">
-                      Teste
-                    </a>
-                <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-sm-1 mt-1">
+                <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-1 pl-md-2 mt-1">
                   Atualizar
                 </a>
                 <a href="{% url 'website:deleta_propriedade' pk=propriedade.id %}" class="btn btn-outline-danger btn-sm mt-1">
