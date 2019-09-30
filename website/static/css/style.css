@@ -172,6 +172,25 @@ hr {
   width: 100%;
 }
 
+.details-main {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.details-main::after {
+  content: "";
+  display: block;
+  width: 10%;
+  height: 5px;
+  background-color: black;
+}
+
+.title-details {
+  font-family: 'Muli', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: red;
+  text-transform: uppercase;
+}
+
 @media (max-width: 767px) {
   .landing-text h1 {
     font-size: 400%;
