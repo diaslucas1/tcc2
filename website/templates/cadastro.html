@@ -73,7 +73,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Área total (ha)</span>
                   </div>
-                  {% render_field form.area_total class+="form-control" type="number" %}
+                  {% render_field form.area_total class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Talhao -->
@@ -89,7 +89,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Área Talhão (ha)</span>
                   </div>
-                  {% render_field form.area_talhao class+="form-control" type="number" %}
+                  {% render_field form.area_talhao class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Matrícula do Lote -->
@@ -121,7 +121,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Profundidade da Amostra (cm)</span>
                   </div>
-                  {% render_field form.profundidade_amostras class+="form-control" type="number" %}
+                  {% render_field form.profundidade_amostras class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Resultado da ánalise de solos -->
@@ -129,7 +129,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Resultado da análise de solos N°</span>
                   </div>
-                  {% render_field form.resultado_analise class+="form-control" type="number" %}
+                  {% render_field form.resultado_analise class+="form-control" type="number" min="0" %}
                 </div>
               </div>
             </div>
@@ -145,7 +145,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Fósforo (mg.dm³)</span>
                   </div>
-                  {% render_field form.fosforo class+="form-control" type="number" %}
+                  {% render_field form.fosforo class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de Potássio -->
@@ -153,7 +153,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Potássio (cmol.dm³)</span>
                   </div>
-                  {% render_field form.potassio class+="form-control" type="number" %}
+                  {% render_field form.potassio class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de Cálcio -->
@@ -161,7 +161,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Cálcio (cmol.dm³)</span>
                   </div>
-                  {% render_field form.calcio class+="form-control" type="number" %}
+                  {% render_field form.calcio class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de Magnésio -->
@@ -169,7 +169,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Magnésio (cmol.dm³)</span>
                   </div>
-                  {% render_field form.magnesio class+="form-control" type="number" %}
+                  {% render_field form.magnesio class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de Enxofre -->
@@ -177,7 +177,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Enxofre (mg.dm³)</span>
                   </div>
-                  {% render_field form.enxofre class+="form-control" type="number" %}
+                  {% render_field form.enxofre class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de Alumínio -->
@@ -185,7 +185,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Alumínio (mg.dm³)</span>
                   </div>
-                  {% render_field form.aluminio class+="form-control" type="number" %}
+                  {% render_field form.aluminio class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de H+AL -->
@@ -193,7 +193,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">H+AL (mg.dm³)</span>
                   </div>
-                  {% render_field form.hal class+="form-control" type="number" %}
+                  {% render_field form.hal class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Matéria Orgânica -->
@@ -201,7 +201,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Matéria Orgânica</span>
                   </div>
-                  {% render_field form.materia_organica class+="form-control" type="number" %}
+                  {% render_field form.materia_organica class+="form-control" type="number" min="0" %}
                 </div>
               </div>
             </div>
@@ -217,7 +217,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Teor de Fósforo a atingir (mg.dm³)</span>
                   </div>
-                  {% render_field form.fosforo_atingir class+="form-control" type="number" %}
+                  {% render_field form.fosforo_atingir class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Fonte de Fósforo a utilizar -->
@@ -233,7 +233,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Eficiência do Fósforo (%)</span>
                   </div>
-                  {% render_field form.eficiencia_fosforo class+="form-control" type="number" %}
+                  {% render_field form.eficiencia_fosforo class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Valor/Ton. da fonte -->
@@ -241,7 +241,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Valor/Ton. (R$)</span>
                   </div>
-                  {% render_field form.valor_fosforo class+="form-control" type="number" %}
+                  {% render_field form.valor_fosforo class+="form-control" type="number" min="0" %}
                 </div>
 
                 <hr>
@@ -280,7 +280,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Participação do Potássio na CTC desejada (%)</span>
                   </div>
-                  {% render_field form.potassio_atingir class+="form-control" type="number" %}
+                  {% render_field form.potassio_atingir class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Fonte de Potássio a utilizar -->
@@ -296,7 +296,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Valor/Ton. (R$)</span>
                   </div>
-                  {% render_field form.valor_potassio class+="form-control" type="number" %}
+                  {% render_field form.valor_potassio class+="form-control" type="number" min="0" %}
                 </div>
 
                 <hr>
@@ -338,7 +338,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Participação do Cálcio na CTC desejada (%)</span>
                   </div>
-                  {% render_field form.calcio_atingir class+="form-control" type="number" %}
+                  {% render_field form.calcio_atingir class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Fonte de Corretivo a utilizar -->
@@ -354,7 +354,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">PRNT (%)</span>
                   </div>
-                  {% render_field form.prnt class+="form-control" type="number" %}
+                  {% render_field form.prnt class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Teor de CaO do corretivo -->
@@ -362,7 +362,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Teor de CaO do corretivo (%)</span>
                   </div>
-                  {% render_field form.cao_corretivo class+="form-control" type="number" %}
+                  {% render_field form.cao_corretivo class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Valor/Ton. da fonte -->
@@ -370,7 +370,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Valor/Ton. (R$)</span>
                   </div>
-                  {% render_field form.valor_calmag class+="form-control" type="number" %}
+                  {% render_field form.valor_calmag class+="form-control" type="number" min="0" %}
                 </div>
 
                 <hr>
@@ -427,4 +427,7 @@
 
 {% block extrascript %}
   <script src="{% static "js/script.js" %}"></script>
+  <script src="{% static "js/calc-fosforo.js" %}"></script>
+  <script src="{% static "js/calc-potassio.js" %}"></script>
+  <script src="{% static "js/calc-calcio-magnesio.js" %}"></script>
 {% endblock %}

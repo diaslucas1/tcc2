@@ -51,7 +51,7 @@ class Propriedade(models.Model):
   data = models.CharField(max_length=255, null=False, default="")
   municipio = models.CharField(max_length=255, null=False, default="")
   lote = models.CharField(max_length=255, null=False, default="")
-  area_total = models.CharField(max_length=255, null=False, default="")
+  area_total = models.DecimalField(max_digits=7, decimal_places=2, null=False)
   talhao = models.CharField(max_length=255, null=False, default="")
   area_talhao = models.CharField(max_length=255, null=False, default="")
   matricula_lote = models.CharField(max_length=255, null=False, default="")
