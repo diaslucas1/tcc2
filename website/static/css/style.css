@@ -164,8 +164,16 @@ html, body {
   color: white;
 }
 
-code {
+.link-breadcrumb {
+  color: #6c757d!important;
+}
+
+code, .breadcrumb-active {
   color: #1A6602;
+}
+
+.breadcrumb-item {
+  font-size: 14px;
 }
 
 hr {

@@ -11,9 +11,16 @@
 
 <div class="container mt-3 mb-5">
   <div class="row">
-    <p class="card-text col-12">
-      Clique no nome de um produtor pra ver o resultado dos cálculos simplificados!
-    </p>
+    
+    <div class="col-12">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class="link-breadcrumb" href="{% url 'website:index' %}">Página Inicial</a></li>
+          <li class="breadcrumb-item breadcrumb-active" aria-current="page">Lista de Propriedades</li>
+        </ol>
+      </nav>
+    </div>
+
     {% if propriedades|length > 0 %}
     <div class="input-group border rounded-pill p-1 mb-4">
       <input type="text" placeholder="Digite o nome do produtor..." aria-describedby="button-addon" class="form-control border-0 buscar-propriedade">
@@ -21,8 +28,12 @@
         <button id="button-addon" type="button" class="btn btn-link"><i class="fa fa-search"></i></button>
       </div>
     </div>
-    
+
     <div class="col-12">
+      <a href="{% url 'website:cadastra_propriedade' %}" class="btn btn-outline-success">+ Novo Cálculo</a>
+    </div>
+    
+    <div class="col-12 mt-3">
         <table class="table table-bordered">
           <thead>
             <tr class="text-center">
@@ -34,7 +45,7 @@
           <tbody>
           {% for propriedade in propriedades %}
             <tr class="propriedade text-center">
-              <td><a href="{% url 'website:detalhe_propriedade' pk=propriedade.id %}">{{ propriedade.nome_produtor }}</a></td>
+              <td><a href="{% url 'website:detalhe_propriedade' pk=propriedade.id %}" class="nome-list">{{ propriedade.nome_produtor }}</a></td>
               <td>{{ propriedade.data }}</td>
               <td class="text-center">
                 <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-1 pl-md-2 mt-1">
