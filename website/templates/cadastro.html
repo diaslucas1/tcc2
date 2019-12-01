@@ -93,7 +93,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text">Talhão</span>
                   </div>
-                  {% render_field form.talhao class+="form-control" %}
+                  {% render_field form.talhao class+="form-control" type="number" min="0" %}
                 </div>
 
                 <!-- Area talhao -->
@@ -267,7 +267,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
                   </div>
-                  {% render_field form.aplicar_fosforo class+="form-control" %}
+                  {% render_field form.aplicar_fosforo class+="form-control" type="number" %}
                 </div>
 
                 <!-- Custo (R$/ha) aplicação fósforo -->
@@ -275,7 +275,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
                   </div>
-                  {% render_field form.custo_fosforo class+="form-control" %}
+                  {% render_field form.custo_fosforo class+="form-control" type="number" %}
                 </div>
                 
               </div>
@@ -319,21 +319,21 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO POTÁSSIO NA CTC DO SOLO (%)</span>
                   </div>
-                  {% render_field form.particip_potassio class+="form-control" %}
+                  {% render_field form.particip_potassio class+="form-control" type="number" %}
                 </div>
 
                 <div class="input-group mb-3 col-md-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (kg/ha)</span>
                   </div>
-                  {% render_field form.aplicar_potassio class+="form-control" %}
+                  {% render_field form.aplicar_potassio class+="form-control" type="number" %}
                 </div>
 
                 <div class="input-group mb-3 col-md-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
                   </div>
-                  {% render_field form.custo_potassio class+="form-control" %}
+                  {% render_field form.custo_potassio class+="form-control" type="number" %}
                 </div>
 
               </div>
@@ -393,28 +393,28 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO CÁLCIO NA CTC DO SOLO (%)</span>
                   </div>
-                  {% render_field form.particip_calc class+="form-control" %}
+                  {% render_field form.particip_calc class+="form-control" type="number" %}
                 </div>
 
                 <div class="input-group mb-3 col-xl-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">PARTICIPAÇÃO ATUAL DO MAGNÉSIO NA CTC DO SOLO (%)</span>
                   </div>
-                  {% render_field form.particip_magnes class+="form-control" %}
+                  {% render_field form.particip_magnes class+="form-control" type="number" %}
                 </div>
 
                 <div class="input-group mb-3 col-md-6">
                   <div class="input-group-prepend">
-                    <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (ton/ha)</span>
+                    <span class="input-group-text label-resultado">QUANTIDADE A APLICAR (Ton/ha)</span>
                   </div>
-                  {% render_field form.aplicar_calmag class+="form-control" %}
+                  {% render_field form.aplicar_calmag class+="form-control" type="number" %}
                 </div>
 
                 <div class="input-group mb-3 col-md-6">
                   <div class="input-group-prepend">
                     <span class="input-group-text label-resultado">CUSTO (R$/ha)</span>
                   </div>
-                  {% render_field form.custo_calmag class+="form-control" %}
+                  {% render_field form.custo_calmag class+="form-control" type="number" %}
                 </div>
               </div>
             </div>
@@ -438,7 +438,7 @@
 {% endblock %}
 
 {% block extrascript %}
-  <script src="{% static "js/script.js" %}"></script>
+  <script src="{% static "js/form-steps.js" %}"></script>
   <script src="{% static "js/calc-fosforo.js" %}"></script>
   <script src="{% static "js/calc-potassio.js" %}"></script>
   <script src="{% static "js/calc-calcio-magnesio.js" %}"></script>

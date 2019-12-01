@@ -67,8 +67,8 @@ function corrigePot() {
         relacDesejAtual = 0.0;
         // dadosPot.innerHTML = `${alteraTemplPot}`;
         participPot.value = `${partAtual.toFixed(1)}`;
-        qntAplicarPot.value = `${resultadoPot}`;
-        custoAplicarPot.value = `${custoTotal}`;
+        qntAplicarPot.value = 0;
+        custoAplicarPot.value = 0;
       }
     }
    

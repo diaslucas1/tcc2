@@ -1,4 +1,5 @@
 let searchFilter = document.querySelector(".buscar-propriedade");
+let datas = document.querySelectorAll(".data-lista");
 
 searchFilter.addEventListener("keyup", function() {
   let propriedades = document.querySelectorAll(".propriedade");
@@ -23,3 +24,7 @@ searchFilter.addEventListener("keyup", function() {
     }
   }
 });
+
+datas.forEach(data => {
+  data.textContent = data.textContent.split("-").reverse().join("/");
+})

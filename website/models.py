@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from datetime import date
 
 TEXTURAS = (
   ('1', 'Argiloso'),
@@ -47,8 +48,8 @@ FONTES_CALMAG = (
 class Propriedade(models.Model):
 
   # Informações sobre a propriedade do produtor
-  nome_produtor = models.CharField(max_length=255, null=False, default="")
-  data = models.CharField(max_length=255, null=False, default="")
+  nome_produtor = models.CharField(max_length=255, null=False, default="", unique=True)
+  data = models.DateField(null=False, default=date.today)
   municipio = models.CharField(max_length=255, null=False, default="")
   lote = models.CharField(max_length=255, null=False, default="")
   area_total = models.DecimalField(max_digits=7, decimal_places=2, null=False)
@@ -60,6 +61,8 @@ class Propriedade(models.Model):
   text_solo = models.CharField(max_length=3, choices=TEXTURAS, default="1")
   sist_cultivo = models.CharField(max_length=3, choices=CULTIVOS, default="1")
 
+# class Laudo(models.Model):
+#   propriedade = models.ForeignKey(Propriedade, on_delete=models.CASCADE)
   # Dados do laudo laboratorial
   fosforo = models.CharField(max_length=255, null=False, default="")
   potassio = models.CharField(max_length=255, null=False, default="")

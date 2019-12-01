@@ -22,7 +22,7 @@ function corrigeFosf() {
 
     // cálculo de acordo com a fonte de fósforo utilizada
     if(fonteFosf.value == 1 || fonteFosf.value == 5 || fonteFosf.value == 12) {
-      resultadoFosf = ((memCalc * 100) / 18).toFixed(2); // valor da fonte de fósforo estática
+      resultadoFosf = ((memCalc * 100) / 18).toFixed(2);
     }
     else if(fonteFosf.value == 2) {
       resultadoFosf = ((memCalc * 100) / 41).toFixed(2);
@@ -74,12 +74,10 @@ function corrigeFosf() {
           custoAplicarFosf.value = `${custoTotal}`;
         } else {
           difAtingirAtual = 0.0;
-          // dadosFosf.innerHTML = `${alteraTemplFosf}`;
-          qntAplicarFosf.value = `${resultadoFosf}`;
-          custoAplicarFosf.value = `${custoTotal}`;
+          qntAplicarFosf.value = 0;
+          custoAplicarFosf.value = 0;
         }
-      }
-           
+      }           
   })
 
   }

@@ -46,7 +46,7 @@
           {% for propriedade in propriedades %}
             <tr class="propriedade text-center">
               <td><a href="{% url 'website:detalhe_propriedade' pk=propriedade.id %}" class="nome-list">{{ propriedade.nome_produtor }}</a></td>
-              <td>{{ propriedade.data }}</td>
+              <td class="data-lista">{{ propriedade.data }}</td>
               <td class="text-center">
                 <a href="{% url 'website:atualiza_propriedade' pk=propriedade.id %}" class="btn btn-outline-success btn-sm pl-1 pl-md-2 mt-1">
                   Atualizar

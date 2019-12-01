@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'emater.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'db_emater',
+        'USER': 'django',
+        'PASSWORD': 'lucas',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
 
@@ -110,7 +114,7 @@ DATE_INPUT_FORMATS = ['%d/%m/%Y']
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
